@@ -14,7 +14,19 @@ def read_products() -> list:
     file.close()
     return products
 
+
 def save_product(product) -> None:
     file = open('backend/db/products.txt','a')
     file.write(f"{product.get('identifier')};{product.get('description')};{product.get('price')}\n")
     file.close()
+
+def read_marketplaces() -> list:
+    file = open('backend/db/marketplaces.txt', 'r')
+    mktplaces= []
+    for line in file:
+        line_by_comas = line.split(';')
+        mktplaces.append(line_by_comas)
+        mktplaces[-1][-1] = mktplaces[-1][-1].rstrip('\n')
+    file.close()
+    return mktplaces
+

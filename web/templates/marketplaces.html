@@ -8,8 +8,9 @@
     </div>
     <br />
     <ul>
-        <li><p>Marketplace 1</p></li>
-        <li><p>Marketplace 2</p></li>
+        {% for marketplace in list %}
+        <li><p>{{ marketplace[0] }}</p></li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

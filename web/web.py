@@ -2,8 +2,7 @@ import sys
 sys.path.append('backend/')
 
 from flask import Flask, render_template, request, redirect
-
-from backend import read_products, save_product, save_marketplaces
+from backend import read_products, save_product, save_marketplaces, read_marketplaces
 
 app = Flask(__name__)
 
@@ -25,7 +24,8 @@ def product_list():
 
 @app.route('/marketplaces')
 def list_marketplace():
-    return render_template('marketplaces.html', title = 'Marketplaces')
+    marketplaces = read_marketplaces()
+    return render_template('marketplaces.html', title = 'Marketplaces',list = marketplaces)
 
 @app.route('/new_marketplace')
 def new_marketplace():
@@ -36,6 +36,6 @@ def create_markestplace():
     name = request.form.get("name")
     description = request.form.get("description")
     save_marketplaces(name,description)
-    return redirect('/')
+    return redirect('/marketplaces')
 
 app.run(debug=True)
