@@ -2,10 +2,12 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+@app.route('/')
+def menu():
+    return render_template('menu.html')
+
 @app.route('/products')
 def create_product():
-    return 0
+    return render_template('product_list.html', title = 'Produtos')
 
-@app.route('/marketplaces')
-def create_mktplace():
-    return render_template('marketplaces.html')
+app.run(debug=True)

@@ -1,0 +1,44 @@
+.button {
+    width: 10%;
+    display: inline-block;
+    border-radius: 5%;
+    border: 1px solid #0C29D0;
+    background-color: #ffffff;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background-color: #0C29D0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.link-button {
+    color: #0C29D0;
+    transition: 1s;
+}
+
+a.link-button:hover {
+    color: #ffffff;
+}
+
+a.link-button p {
+    text-align: center;
+    margin: 0px;
+    padding: 15px 0;
+}
+
+.input-form {
+    padding: 5px 0;
+    font-size: 0.9em;
+    border: none;
+    border-bottom: 1.5px solid rgb(186, 186, 186);
+    color: rgb(62, 62, 62);
+}
+
+li p {
+    text-decoration: none;
+    color: #0C29D0;
+}
