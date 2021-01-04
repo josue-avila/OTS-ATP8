@@ -1,7 +1,7 @@
 
-def save_marketplaces(name:str, description: str) -> None:
+def save_marketplaces(marketplace) -> None:
     file = open('backend/db/marketplaces.txt','a')
-    file.write(f'{name};{description}\n')
+    file.write(f'{marketplace.get("name")};{marketplace.get("description")}\n')
     file.close()
 
 def read_products() -> list:
@@ -13,7 +13,6 @@ def read_products() -> list:
         products[-1][-1] = products[-1][-1].rstrip('\n')
     file.close()
     return products
-
 
 def save_product(product) -> None:
     file = open('backend/db/products.txt','a')

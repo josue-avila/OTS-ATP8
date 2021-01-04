@@ -22,20 +22,16 @@ def product_list():
     products = read_products()
     return render_template('product_list.html', title = 'Produtos', list = products)
 
-@app.route('/marketplaces')
+@app.route('/marketplaces',methods=['GET','POST'])
 def list_marketplace():
+    if request.method == 'POST':
+        save_marketplaces(request.form)
     marketplaces = read_marketplaces()
-    return render_template('marketplaces.html', title = 'Marketplaces',list = marketplaces)
+    return render_template('marketplaces_list.html', title = 'Marketplaces',list = marketplaces)
 
-@app.route('/new_marketplace')
+@app.route('/create_marketplace')
 def new_marketplace():
-    return render_template('new_marketplace.html', title ='Novo Marketplace')
+    return render_template('create_marketplace.html', title ='Novo Marketplace')
 
-@app.route('/create_marketplace',methods=['POST'])
-def create_markestplace():
-    name = request.form.get("name")
-    description = request.form.get("description")
-    save_marketplaces(name,description)
-    return redirect('/marketplaces')
 
 app.run(debug=True)
