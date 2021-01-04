@@ -1,8 +1,10 @@
+from datetime import datetime
 
 def save_marketplaces(marketplace) -> None:
     file = open('backend/db/marketplaces.txt','a')
     file.write(f'{marketplace.get("name")};{marketplace.get("description")}\n')
     file.close()
+    create_log("save_marketplaces")
 
 def read_products() -> list:
     file = open('backend/db/products.txt', 'r')
@@ -12,12 +14,14 @@ def read_products() -> list:
         products.append(line_by_comas)
         products[-1][-1] = products[-1][-1].rstrip('\n')
     file.close()
+    create_log("read_products")
     return products
 
 def save_product(product) -> None:
     file = open('backend/db/products.txt','a')
     file.write(f"{product.get('identifier')};{product.get('description')};{product.get('price')}\n")
     file.close()
+    create_log("save_product")
 
 def read_marketplaces() -> list:
     file = open('backend/db/marketplaces.txt', 'r')
@@ -27,5 +31,11 @@ def read_marketplaces() -> list:
         mktplaces.append(line_by_comas)
         mktplaces[-1][-1] = mktplaces[-1][-1].rstrip('\n')
     file.close()
+    create_log("read_marketplaces")
     return mktplaces
 
+def create_log(file_name) -> None:
+    file = open('logs/logs.txt', "a")
+    info = str(datetime.now()) + ' Foi consultado ' + file_name + '\n'
+    file.write(info)
+    file.close()
