@@ -35,7 +35,7 @@ def read_marketplaces() -> list:
     return mktplaces
 
 def create_log(file_name) -> None:
-    file = open('logs/logs.txt', "a")
+    file = open('backend/logs/logs.txt', "a")
     info = str(datetime.now()) + ' Foi consultado ' + file_name + '\n'
     file.write(info)
     file.close()
