@@ -3,8 +3,7 @@ sys.path.append('backend/')
 
 from flask import Flask, render_template, request, redirect
 
-from backend import read_products,save_marketplaces
-
+from backend import read_products, save_product, save_marketplaces
 
 app = Flask(__name__)
 
@@ -13,14 +12,14 @@ def menu():
     return render_template('menu.html')
 
 @app.route('/create-product')
-def create_product():
+def form_product():
     products = read_products()
     return render_template('create_product.html', title = 'Produtos', list = products)
 
-@app.route('/products')
+@app.route('/products', methods=["GET", "POST"])
 def product_list():
-    # se método post
-        # chamar função de criar produto
+    if request.method == 'POST':
+        save_product(request.form)
     products = read_products()
     return render_template('product_list.html', title = 'Produtos', list = products)
 

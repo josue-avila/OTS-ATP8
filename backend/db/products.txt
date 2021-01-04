@@ -1,1 +1,2 @@
-prod-01;produto 1;30
+prd-01;Celular;1200
+prd-02;Fone;400

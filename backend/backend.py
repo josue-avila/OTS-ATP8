@@ -13,3 +13,8 @@ def read_products() -> list:
         products[-1][-1] = products[-1][-1].rstrip('\n')
     file.close()
     return products
+
+def save_product(product) -> None:
+    file = open('backend/db/products.txt','a')
+    file.write(f"{product.get('identifier')};{product.get('description')};{product.get('price')}\n")
+    file.close()
