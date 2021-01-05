@@ -17,17 +17,21 @@ def form_product():
 
 @app.route('/products', methods=["GET", "POST"])
 def product_list():
+    save = 'false'
     if request.method == 'POST':
         save_product(request.form)
+        save = 'true'
     products = read_products()
-    return render_template('product_list.html', title = 'Produtos', list = products)
+    return render_template('product_list.html', title = 'Produtos', list = products, save = save)
 
 @app.route('/marketplaces',methods=['GET','POST'])
 def list_marketplace():
+    save = 'false'
     if request.method == 'POST':
         search_mktplace(request.form)
+        save = 'true'
     marketplaces = read_marketplaces()
-    return render_template('marketplaces_list.html', title = 'Marketplaces',list = marketplaces)
+    return render_template('marketplaces_list.html', title = 'Marketplaces',list = marketplaces, save = save)
 
 @app.route('/create_marketplace')
 def new_marketplace():

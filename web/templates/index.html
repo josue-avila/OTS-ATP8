@@ -20,5 +20,19 @@
     </nav>
     <h2>{{ title }}</h2>
     {% block body %}{% endblock %}
+    <span class="popuptext" visible='{{save}}' class="show" id="save">Salvo com sucesso!</span>  
 </body>
+
+<script>
+    isvisible = document.getElementById("save").getAttribute("visible")
+    if (isvisible === 'true') {
+        setTimeout(saveWarning, 200);
+        setTimeout(saveWarning, 1000);
+    }
+
+    function saveWarning() {
+        var popup = document.getElementById("save");
+        popup.classList.toggle("show");
+    }
+</script>
 </html>
