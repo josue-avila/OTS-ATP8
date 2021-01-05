@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def menu():
-    return render_template('menu.html')
+    return render_template('index.html')
 
 @app.route('/create-product')
 def form_product():
