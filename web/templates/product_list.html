@@ -1,16 +1,25 @@
 {% extends 'index.html' %}
 {% block body %}
+<div class='button'>
+    <a href='/create-product' class="link-button">
+        <p>Criar novo</p>
+    </a>
+</div>
 <div>
-    <div class='button'>
-        <a href='/create-product' class="link-button">
-            <p>Criar novo</p>
-        </a>
-    </div>
     <br />
-    <ul>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+        </tr>
         {% for product in list %}
-        <li><p>{{ product[1] }}</p></li>
+                <tr>
+                    <td>{{ product[0] }}</td>
+                    <td>{{ product[1] }}</td>
+                    <td>{{ product[2] }}</td>
+                </tr>
         {% endfor %}
-    </ul>
+    </table>
 </div>
 {% endblock %}

@@ -1,16 +1,23 @@
 {% extends 'index.html' %}
 {% block body %}
+<div class='button'>
+    <a href='/create_marketplace' class="link-button">
+        <p>Criar novo</p>
+    </a>
+</div>
 <div>
-    <div class='button'>
-        <a href='/create_marketplace' class="link-button">
-            <p>Criar novo</p>
-        </a>
-    </div>
     <br />
-    <ul>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+        </tr>
         {% for marketplace in list %}
-        <li><p>{{ marketplace[0] }}</p></li>
+                <tr>
+                    <td>{{ marketplace[0] }}</td>
+                    <td>{{ marketplace[1] }}</td>
+                </tr>
         {% endfor %}
-    </ul>
+    </table>
 </div>
 {% endblock %}

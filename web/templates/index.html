@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
     <link href="{{ url_for('static', filename='global.css') }}" rel="stylesheet">
     <title>Atividade - Olist</title>
 </head>
 <body>
+    <nav>
+        <a href='/products' class="link-menu">
+            <p>Produto</p>
+        </a>
+        <a href='/marketplaces' class="link-menu">
+            <p>Marketplace</p>
+        </a>
+    </nav>
     <h2>{{ title }}</h2>
     {% block body %}{% endblock %}
 </body>
