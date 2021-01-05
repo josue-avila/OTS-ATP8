@@ -2,7 +2,7 @@ import sys
 sys.path.append('backend/')
 
 from flask import Flask, render_template, request, redirect
-from backend import read_products, save_product, save_marketplaces, read_marketplaces
+from backend import read_products, save_product, save_marketplaces, read_marketplaces, search_mktplace #pylint: disable=import-error
 
 app = Flask(__name__)
 
@@ -25,7 +25,7 @@ def product_list():
 @app.route('/marketplaces',methods=['GET','POST'])
 def list_marketplace():
     if request.method == 'POST':
-        save_marketplaces(request.form)
+        search_mktplace(request.form)
     marketplaces = read_marketplaces()
     return render_template('marketplaces_list.html', title = 'Marketplaces',list = marketplaces)
 

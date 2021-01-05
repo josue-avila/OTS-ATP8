@@ -5,6 +5,7 @@ def save_marketplaces(marketplace) -> None:
     file.write(f'{marketplace.get("name")};{marketplace.get("description")}\n')
     file.close()
     create_log("save_marketplaces")
+    
 
 def read_products() -> list:
     file = open('backend/db/products.txt', 'r')
@@ -39,3 +40,11 @@ def create_log(file_name) -> None:
     info = str(datetime.now()) + ' Foi consultado ' + file_name + '\n'
     file.write(info)
     file.close()
+
+def search_mktplace(marketplace):
+    marketplaces_list = read_marketplaces()
+    marketplaces_names=[]
+    for mkt in marketplaces_list:
+        marketplaces_names.append(mkt[0])
+    if not marketplace.get("name") in marketplaces_names:
+        save_marketplaces(marketplace)
