@@ -49,7 +49,6 @@ def search_mktplace(marketplace):
     if not marketplace.get("name") in marketplaces_names:
         save_marketplaces(marketplace)
 
-#included by Ana - 05/01/2021
 def write_file(path: str, line: str) -> None:
     if isinstance(line, str):
         archive = open(path, 'a')
