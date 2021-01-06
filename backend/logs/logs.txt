@@ -79,3 +79,35 @@
 2021-01-05 09:23:01.890193 Foi consultado read_marketplaces
 2021-01-05 09:23:06.877609 Foi consultado read_marketplaces
 2021-01-05 09:23:06.877836 Foi consultado read_marketplaces
+2021-01-05 10:48:33.952637 Foi consultado read_products
+2021-01-05 10:48:39.783964 Foi consultado read_products
+2021-01-05 10:48:51.277133 Foi consultado save_product
+2021-01-05 10:48:51.277378 Foi consultado read_products
+2021-01-05 10:48:55.432160 Foi consultado read_marketplaces
+2021-01-05 10:52:01.328521 Foi consultado read_marketplaces
+2021-01-05 10:52:01.328771 Foi consultado save_marketplaces
+2021-01-05 10:52:01.328956 Foi consultado read_marketplaces
+2021-01-06 08:00:14.455569 Foi consultado read_marketplaces
+2021-01-06 08:02:00.732001 Foi consultado read_marketplaces
+2021-01-06 08:02:08.542799 Foi consultado read_marketplaces
+2021-01-06 08:02:08.543301 Foi consultado save_marketplaces
+2021-01-06 08:02:08.543667 Foi consultado read_marketplaces
+2021-01-06 08:07:28.504312 Foi consultado read_marketplaces
+2021-01-06 08:07:39.603135 Foi consultado read_marketplaces
+2021-01-06 08:07:45.179654 Foi consultado read_marketplaces
+2021-01-06 08:08:18.028842 Foi consultado read_marketplaces
+2021-01-06 08:08:28.757672 Foi consultado read_marketplaces
+2021-01-06 08:14:36.945132 Foi consultado read_marketplaces
+2021-01-06 08:14:43.374449 Foi consultado read_marketplaces
+2021-01-06 08:15:32.379629 Foi consultado read_marketplaces
+2021-01-06 08:15:49.416940 Foi consultado read_marketplaces
+2021-01-06 08:18:20.853825 Foi consultado read_marketplaces
+2021-01-06 08:18:25.356614 Foi consultado Cadastrar Marketplace
+2021-01-06 08:18:25.357063 Foi consultado read_marketplaces
+2021-01-06 08:19:02.730965 Foi consultado Cadastrar Marketplace
+2021-01-06 08:19:02.731134 Foi consultado read_marketplaces
+2021-01-06 08:20:10.226352 Foi consultado Cadastrar Marketplace
+2021-01-06 08:20:10.226542 Foi consultado read_marketplaces
+2021-01-06 08:21:14.824925 Foi consultado Cadastrar Categoria
+2021-01-06 08:21:14.825132 Foi consultado read_marketplaces
+2021-01-06 08:22:45.897804 Foi consultado Cadastrar Categoria
