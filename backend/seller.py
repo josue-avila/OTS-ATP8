@@ -1,5 +1,5 @@
 # Seller
-from backend import write_file
+from backend import write_file,create_log
 import re
 
 def save_seller(seller,path) -> None:
