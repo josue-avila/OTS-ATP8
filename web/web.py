@@ -52,6 +52,7 @@ def list_categories():
     print(cat_desc)
     if cat != None:
         add_new_category(cat, cat_desc)
+    #lista vazia apenas para manter o padrão! Será necessário implementar a função de listagem das categorias futuramente
     categories = []
     return render_template('categories_list.html', title = 'Categories',list = categories)
 
