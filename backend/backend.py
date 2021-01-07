@@ -48,3 +48,11 @@ def search_mktplace(marketplace):
         marketplaces_names.append(mkt[0])
     if not marketplace.get("name") in marketplaces_names:
         save_marketplaces(marketplace)
+
+def write_file(path: str, line: str) -> None:
+    if isinstance(line, str):
+        archive = open(path, 'a')
+        archive.write(f'{line}\n')
+        archive.close()
+    else:
+        raise Exception("incorrect value")
