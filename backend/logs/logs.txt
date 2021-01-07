@@ -24,4 +24,15 @@
 2021-01-07 11:08:40.614214 Foi consultado read_sellers
 2021-01-07 11:09:24.670865 Foi consultado read_sellers
 2021-01-07 11:09:30.536960 Foi consultado read_marketplaces
-2021-01-07 11:09:32.155530 Foi consultado read_products
+2021-01-07 11:09:32.155530 Foi consultado read_products2021-01-07 13:46:54.059359 Foi consultado read_logs
+2021-01-07 13:51:53.831946 Foi consultado read_logs
+2021-01-07 13:54:04.051287 Foi consultado read_logs
+2021-01-07 13:54:45.438107 Foi consultado read_logs
+2021-01-07 13:57:39.889580 Foi consultado read_logs
+2021-01-07 13:57:40.312313 Foi consultado read_logs
+2021-01-07 13:57:41.838964 Foi consultado read_logs
+2021-01-07 13:57:50.370770 Foi consultado read_categories
+2021-01-07 13:57:57.422861 Foi consultado read_categories
+2021-01-07 13:57:57.423285 Foi consultado create_category
+2021-01-07 13:57:57.424318 Foi consultado read_categories
+2021-01-07 13:57:59.070801 Foi consultado read_logs
