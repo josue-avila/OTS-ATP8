@@ -4,6 +4,7 @@ sys.path.append('backend/')
 from flask import Flask, render_template, request, redirect
 from backend import read_products, save_product, save_marketplaces, read_marketplaces, search_mktplace #pylint: disable=import-error
 from category import add_new_category
+from seller import save_seller #pylint: disable=import-error
 
 app = Flask(__name__)
 
@@ -38,6 +39,7 @@ def list_marketplace():
 def new_marketplace():
     return render_template('create_marketplace.html', title ='Novo Marketplace')
 
+
 @app.route('/create_category')
 def new_category():
     return render_template('create_category.html', title ='Nova Categoria')
@@ -55,6 +57,16 @@ def list_categories():
     #lista vazia apenas para manter o padrão! Será necessário implementar a função de listagem das categorias futuramente
     categories = []
     return render_template('categories_list.html', title = 'Categories',list = categories)
+@app.route('/create-seller')
+def form_seller():
+    return render_template('create_seller.html', title = 'Sellers')
 
+@app.route('/seller', methods=["GET", "POST"])
+def product_seller():
+    save = 'false'
+    if request.method == 'POST':
+        save_seller(request.form, "backend/db/sellers.txt")
+        save = 'true'
+    return render_template('seller_list.html', title = 'Sellers', save = save)
 
 app.run(debug=True)
