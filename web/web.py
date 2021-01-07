@@ -2,8 +2,8 @@ import sys
 sys.path.append('backend/')
 
 from flask import Flask, render_template, request, redirect
-from backend import read_products, save_product, save_marketplaces, read_marketplaces, search_mktplace #pylint: disable=import-error
-from category import search_category, read_categories
+from backend import read_logs, read_products, search_mktplace, save_product, read_marketplaces #pylint: disable=import-error 
+from category import search_category, read_categories #pylint: disable=import-error
 from seller import save_seller,read_sellers #pylint: disable=import-error
 
 app = Flask(__name__)
@@ -66,5 +66,12 @@ def seller_list():
         save = 'true'
     sellers = read_sellers()
     return render_template('seller_list.html', title = 'Sellers', list = sellers, save = save)
+
+@app.route('/logs', methods=["GET", "POST"])
+def logs_list():
+    save = 'false'
+    logs = read_logs()
+    return render_template('logs_list.html', title = 'Logs', list = logs, save = save)
+
 
 app.run(debug=True)

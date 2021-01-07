@@ -6,3 +6,4 @@ nova cat;desc cat
 sssss;ssssaaaaa
 nova;categoria
 opa;eai
+teste;teste
