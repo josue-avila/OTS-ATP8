@@ -3,7 +3,7 @@ sys.path.append('backend/')
 
 from flask import Flask, render_template, request, redirect
 from backend import read_products, save_product, save_marketplaces, read_marketplaces, search_mktplace #pylint: disable=import-error
-from category import add_new_category
+from category import search_category, read_categories
 from seller import save_seller #pylint: disable=import-error
 
 app = Flask(__name__)
@@ -49,13 +49,9 @@ def list_categories():
    
     cat = request.form.get('name')
     cat_desc = request.form.get('description')
-
-    print(cat)
-    print(cat_desc)
     if cat != None:
-        add_new_category(cat, cat_desc)
-    #lista vazia apenas para manter o padrão! Será necessário implementar a função de listagem das categorias futuramente
-    categories = []
+        search_category(cat, cat_desc)
+    categories = read_categories()
     return render_template('categories_list.html', title = 'Categories',list = categories)
 @app.route('/create-seller')
 def form_seller():

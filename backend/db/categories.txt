@@ -4,3 +4,5 @@ imee;aaaa
 afas;asfasfasfa
 nova cat;desc cat
 sssss;ssssaaaaa
+nova;categoria
+opa;eai
