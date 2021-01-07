@@ -9,3 +9,14 @@ def save_seller(seller,path) -> None:
         create_log("save_seller")
     else:
         raise Exception("Please verify the seller information and try again.")
+
+def read_sellers() -> list:
+    file = open('backend/db/sellers.txt', 'r')
+    sellers = []
+    for line in file:
+        line_by_comas = line.split(';')
+        sellers.append(line_by_comas)
+        sellers[-1][-1] = sellers[-1][-1].rstrip('\n')
+    file.close()
+    create_log("read_sellers")
+    return sellers
