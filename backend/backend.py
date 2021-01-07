@@ -56,3 +56,15 @@ def write_file(path: str, line: str) -> None:
         archive.close()
     else:
         raise Exception("incorrect value")
+
+
+def read_logs() -> list:
+    file = open('backend/logs/logs.txt', 'r')
+    logs = []
+    for line in file:
+        line.strip("\n")
+        line_by_space = line.split(' ')
+        logs.append((line_by_space[0], line_by_space[1], line_by_space[-1]))
+    file.close()
+    create_log("read_logs")
+    return logs
