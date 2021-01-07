@@ -12,7 +12,7 @@ def add_new_category(name:str, desc:str)->None:
     if isinstance(name, str) and isinstance(desc, str): 
         linha = f'{name};{desc}'
         salvar_arquivo(cat_file,linha)
-    create_log('Cadastrar Categoria')    
+    create_log('create_category')    
 
 def read_categories() -> list:
     file = open('backend/db/categories.txt', 'r')

@@ -102,21 +102,4 @@
 2021-01-06 08:15:32.379629 Foi consultado read_marketplaces
 2021-01-06 08:15:49.416940 Foi consultado read_marketplaces
 2021-01-06 08:18:20.853825 Foi consultado read_marketplaces
-2021-01-06 08:18:25.356614 Foi consultado Cadastrar Marketplace
-2021-01-06 08:18:25.357063 Foi consultado read_marketplaces
-2021-01-06 08:19:02.730965 Foi consultado Cadastrar Marketplace
-2021-01-06 08:19:02.731134 Foi consultado read_marketplaces
-2021-01-06 08:20:10.226352 Foi consultado Cadastrar Marketplace
-2021-01-06 08:20:10.226542 Foi consultado read_marketplaces
-2021-01-06 08:21:14.824925 Foi consultado Cadastrar Categoria
-2021-01-06 08:21:14.825132 Foi consultado read_marketplaces
-2021-01-06 08:22:45.897804 Foi consultado Cadastrar Categoria
-2021-01-06 13:44:24.306347 Foi consultado Cadastrar Categoria
-2021-01-06 13:47:36.599261 Foi consultado Cadastrar Categoria
-2021-01-07 09:29:33.538574 Foi consultado read_categories
-2021-01-07 09:29:41.635504 Foi consultado read_categories
-2021-01-07 09:29:41.635840 Foi consultado Cadastrar Categoria
-2021-01-07 09:29:41.636095 Foi consultado read_categories
-2021-01-07 09:29:54.255434 Foi consultado read_categories
-2021-01-07 09:29:54.255722 Foi consultado Cadastrar Categoria
 2021-01-07 09:29:54.255960 Foi consultado read_categories
