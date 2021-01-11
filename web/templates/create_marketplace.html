@@ -1,11 +1,11 @@
 {% extends 'index.html' %}
 {% block body %}
-
+<div class="form-container">
     <form action="/marketplaces" method="POST">
         <input type="text" placeholder="Nome" name="name" class="input-form" />
         <input type="text" placeholder="Descrição" name="description" class="input-form" />
         <br /><br />
         <input type="submit" class="button" />
     </form>
-
+</div>
 {% endblock %}

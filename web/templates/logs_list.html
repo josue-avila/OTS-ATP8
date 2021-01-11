@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block body %}
+<div>
+    <br />
+    <table>
+        <tr>
+            <th>Descrição</th>
+        </tr>
+        {% for log in list %}
+        {% if log[1] == "get" %}
+        <tr style="color: blue">
+            <td>{{ log[2] }}</td>
+        </tr>
+        {% endif %}
+        {% if log[1] == "set" %}
+        <tr style="color: red">
+            <td>{{ log[2] }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

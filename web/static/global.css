@@ -36,21 +36,16 @@ a.link-menu p {
 }
 
 h2 {
-    margin-top: 5%;
-    margin-right: 50px;
-    width: 48%;
-    display: inline-block;
-    text-align: end;
     font-weight: bold;
 }
 
 .button {
-    width: 10%;
-    display: inline-block;
+    width: 20%;
     border-radius: 5%;
     border: 1px solid #0C29D0;
     background-color: #ffffff;
     transition: 0.5s;
+    margin: 0 auto;
 }
 
 .button:hover {
@@ -143,4 +138,17 @@ tr:nth-child(even) {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+.form-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.title-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

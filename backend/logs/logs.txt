@@ -1,38 +1,24 @@
-2021-01-04 17:49:25.544068 Foi consultado read_products
-2021-01-04 18:05:22.738899 Foi consultado read_marketplaces
-2021-01-05 09:23:06.877609 Foi consultado read_marketplaces
-2021-01-05 09:23:06.877836 Foi consultado read_marketplaces
-2021-01-05 10:48:33.952637 Foi consultado read_products
-2021-01-05 10:48:39.783964 Foi consultado read_products
-2021-01-05 10:48:51.277133 Foi consultado save_product
-2021-01-05 10:48:51.277378 Foi consultado read_products
-2021-01-05 10:48:55.432160 Foi consultado read_marketplaces
-2021-01-06 08:08:28.757672 Foi consultado read_marketplaces
-2021-01-06 08:14:36.945132 Foi consultado read_marketplaces
-2021-01-06 08:14:43.374449 Foi consultado read_marketplaces
-2021-01-06 08:15:32.379629 Foi consultado read_marketplaces
-2021-01-06 08:15:49.416940 Foi consultado read_marketplaces
-2021-01-06 08:18:20.853825 Foi consultado read_marketplaces
-2021-01-07 09:29:54.255960 Foi consultado read_categories
-2021-01-06 08:18:25.357063 Foi consultado read_marketplaces
-2021-01-06 08:19:02.731134 Foi consultado read_marketplaces
-2021-01-06 08:20:10.226542 Foi consultado read_marketplaces
-2021-01-06 08:21:14.825132 Foi consultado read_marketplaces
-2021-01-07 11:07:31.583217 Foi consultado read_sellers
-2021-01-07 11:08:25.750514 Foi consultado read_sellers
-2021-01-07 11:08:40.613106 Foi consultado save_seller
-2021-01-07 11:08:40.614214 Foi consultado read_sellers
-2021-01-07 11:09:24.670865 Foi consultado read_sellers
-2021-01-07 11:09:30.536960 Foi consultado read_marketplaces
-2021-01-07 11:09:32.155530 Foi consultado read_products2021-01-07 13:46:54.059359 Foi consultado read_logs
-2021-01-07 13:51:53.831946 Foi consultado read_logs
-2021-01-07 13:54:04.051287 Foi consultado read_logs
-2021-01-07 13:54:45.438107 Foi consultado read_logs
-2021-01-07 13:57:39.889580 Foi consultado read_logs
-2021-01-07 13:57:40.312313 Foi consultado read_logs
-2021-01-07 13:57:41.838964 Foi consultado read_logs
-2021-01-07 13:57:50.370770 Foi consultado read_categories
-2021-01-07 13:57:57.422861 Foi consultado read_categories
-2021-01-07 13:57:57.423285 Foi consultado create_category
-2021-01-07 13:57:57.424318 Foi consultado read_categories
-2021-01-07 13:57:59.070801 Foi consultado read_logs
+get;11/01/2021 15:16:00=> Acesso a função: read_products
+get;11/01/2021 15:16:04=> Acesso a função: read_marketplace
+get;11/01/2021 15:16:05=> Acesso a função: read_categories
+get;11/01/2021 15:16:05=> Acesso a função: read_sellers
+get;11/01/2021 15:16:22=> Acesso a função: read_products
+get;11/01/2021 15:16:23=> Acesso a função: read_products
+set;11/01/2021 15:16:30=> Acesso a função: save_product
+get;11/01/2021 15:16:30=> Acesso a função: read_products
+get;11/01/2021 15:16:35=> Acesso a função: read_marketplace
+set;11/01/2021 15:16:39=> Acesso a função: save_marketplace
+get;11/01/2021 15:16:39=> Acesso a função: read_marketplace
+get;11/01/2021 15:16:43=> Acesso a função: read_categories
+set;11/01/2021 15:16:49=> Acesso a função: add_new_category
+get;11/01/2021 15:16:49=> Acesso a função: read_categories
+get;11/01/2021 15:16:54=> Acesso a função: read_sellers
+set;11/01/2021 15:16:59=> Acesso a função: save_sellers
+get;11/01/2021 15:16:59=> Acesso a função: read_sellers
+get;11/01/2021 15:18:15=> Acesso a função: read_products
+get;11/01/2021 15:18:28=> Acesso a função: read_products
+get;11/01/2021 15:19:07=> Acesso a função: read_products
+get;11/01/2021 15:19:11=> Acesso a função: read_products
+get;11/01/2021 15:19:12=> Acesso a função: read_sellers
+get;11/01/2021 15:19:28=> Acesso a função: read_categories
+get;11/01/2021 15:19:32=> Acesso a função: read_marketplace

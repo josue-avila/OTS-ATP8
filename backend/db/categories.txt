@@ -7,3 +7,8 @@ sssss;ssssaaaaa
 nova;categoria
 opa;eai
 teste;teste
+Eletrônicos;Celulares, etc.
+Móveis;móveis para escritório
+Eletro;linha branca
+eletro;linha branca
+ADAS;ASDASD
