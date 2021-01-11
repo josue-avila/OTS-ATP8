@@ -1,3 +1,5 @@
 aaaa;aaaa
 Submarino;1
 Teste;cat
+O Boticário;perfumaria
+Americanas;1651651
