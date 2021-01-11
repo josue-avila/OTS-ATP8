@@ -27,7 +27,11 @@
             <p>Logs</p>
         </a>
     </nav>
-    <h2>{{ title }}</h2>
+    
+    <div class="title-container">
+        <h2>{{ title }}</h2>
+    </div>
+    
     {% block body %}{% endblock %}
     <span class="popuptext" visible='{{save}}' class="show" id="save">Salvo com sucesso!</span>  
 </body>

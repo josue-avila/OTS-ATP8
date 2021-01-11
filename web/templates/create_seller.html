@@ -1,10 +1,13 @@
 {% extends 'index.html' %}
 {% block body %}
-<form action="/sellers" method="POST">
-    <input type="text" placeholder="Nome Completo" name="fullname" class="input-form" required/>
-    <input type="tel" placeholder="Telefone" name="phone" class="input-form" required/>
-    <input type="email" placeholder="E-mail" name="email" class="input-form" required/>
-    <br /><br />
-    <input type="submit" class="button" />
-</form>
+<div class="form-container">
+    <form action="/sellers" method="POST">
+        <input type="text" placeholder="Nome Completo" name="fullname" class="input-form" required/>
+        <input type="tel" placeholder="Telefone" name="phone" class="input-form" required/>
+        <input type="email" placeholder="E-mail" name="email" class="input-form" required/>
+        <br /><br />
+        <input type="submit" class="button" />
+    </form>
+</div>
+
 {% endblock %}
