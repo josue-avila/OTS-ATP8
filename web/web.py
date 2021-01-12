@@ -26,12 +26,14 @@ def form_product():
 
 @app.route('/products', methods=["GET", "POST"])
 def product_list():
-    save = 'false'
-    if request.method == 'POST':
-        save_product(request.form)
-        save = 'true'
+    name = request.form.get('name')
+    description = request.form.get('description')
+    price = request.form.get('price')
+    product = Product(name, description, price)
+    if product != None:
+        save_product(product)
     products = read_products()
-    return render_template('product_list.html', title='Produtos', list=products, save=save)
+    return render_template('product_list.html', title='Products', list=products)
 
 
 # MARKETPLACES

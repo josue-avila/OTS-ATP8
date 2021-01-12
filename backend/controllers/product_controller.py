@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append('.')
 
 from backend.dao.product_dao import *
@@ -16,6 +17,8 @@ def read_products() -> list:
 
 # Método responsável invocar o método de
 # persistência de um novo produto
-def save_product(product) -> None:
-    save_product_db(product)
-    create_log('set', 'save_product')
+def save_product(product: Product) -> None:
+    if (isinstance(product.name, str) and isinstance(product.description, str)
+            and isinstance(product.price, str)):
+        save_product_db(product)
+        create_log('set', 'save_product')
