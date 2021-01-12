@@ -4,17 +4,23 @@
     <br />
     <table>
         <tr>
+            <th>Timestamp</th>
+            <th>Operação</th>
             <th>Descrição</th>
         </tr>
         {% for log in list %}
-        {% if log[1] == "get" %}
+        {% if log[2] == "get" %}
         <tr style="color: blue">
+            <td>{{ log[1] }}</td>
             <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
         </tr>
         {% endif %}
-        {% if log[1] == "set" %}
+        {% if log[2] == "set" %}
         <tr style="color: red">
+            <td>{{ log[1] }}</td>
             <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
         </tr>
         {% endif %}
         {% endfor %}

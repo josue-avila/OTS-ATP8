@@ -30,6 +30,7 @@ CREATE TABLE categoria (
 
 CREATE TABLE logs (
 	id serial NOT NULL,
+	timestamp varchar(20) not null,
 	operacao varchar(20) not null,
 	descricao varchar(300) NOT NULL,
 	CONSTRAINT logs_pk PRIMARY KEY (id)
