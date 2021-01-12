@@ -10,10 +10,12 @@
     <table>
         <tr>
             <th>Código</th>
+            <th>Nome</th>
             <th>Descrição</th>
         </tr>
         {% for  category in list %}
                 <tr>
+                    <td>{{ category[0] }}</td>
                     <td>{{ category[1] }}</td>
                     <td>{{ category[2] }}</td>
                 </tr>

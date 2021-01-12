@@ -9,12 +9,14 @@
     <br />
     <table>
         <tr>
+            <th>Código</th>
             <th>Nome Completo</th>
             <th>Telefone</th>
             <th>E-mail</th>
         </tr>
         {% for seller in list %}
                 <tr>
+                    <td>{{ seller[0] }}</td>
                     <td>{{ seller[1] }}</td>
                     <td>{{ seller[2] }}</td>
                     <td>{{ seller[3] }}</td>

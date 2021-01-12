@@ -10,12 +10,14 @@
     <table>
         <tr>
             <th>Código</th>
+            <th>Nome</th>
             <th>Descrição</th>
         </tr>
         {% for marketplace in list %}
                 <tr>
                     <td>{{ marketplace[0] }}</td>
                     <td>{{ marketplace[1] }}</td>
+                    <td>{{ marketplace[2] }}</td>
                 </tr>
         {% endfor %}
     </table>
