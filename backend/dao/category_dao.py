@@ -1,5 +1,6 @@
 from backend.helpers.connection_db import *
 
+
 # Método de persistência de uma nova categoria no banco de dados
 # name = nome da nova categoria cadastrada
 # desc = descrição da nova categoria cadastrada
@@ -8,6 +9,8 @@ def add_new_category_db(name: str, desc: str) -> bool:
         cursor.execute(
             f"INSERT INTO categoria(nome, descricao) VALUES('{name}','{desc}');")
         con.commit()
+        # cursor.close()
+        # con.close()
         return True
     except Exception as e:
         return False
@@ -19,9 +22,6 @@ def read_categories_db() -> list:
     cursor.execute('SELECT * FROM categoria;')
     categories = cursor.fetchall()
     con.commit()
+    # cursor.close()
+    # con.close()
     return categories
-
-
-# Método de consulta de um categoria especifica
-def search_category_db(name: str, desc: str):
-    pass
