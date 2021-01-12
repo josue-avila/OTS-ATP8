@@ -37,12 +37,13 @@ def product_list():
 # MARKETPLACES
 @app.route('/marketplaces', methods=['GET', 'POST'])
 def list_marketplace():
-    save = 'false'
-    if request.method == 'POST':
-        save_marketplace(request.form)
-        save = 'true'
+    name = request.form.get('name')
+    description = request.form.get('description')
+    marketplace = Marketplace(name, description)
+    if marketplace != None:
+        save_marketplace(marketplace)
     marketplaces = read_marketplaces()
-    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces, save=save)
+    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces)
 
 
 @app.route('/create_marketplace')

@@ -15,9 +15,9 @@
         </tr>
         {% for marketplace in list %}
                 <tr>
-                    <td>{{ marketplace[0] }}</td>
-                    <td>{{ marketplace[1] }}</td>
-                    <td>{{ marketplace[2] }}</td>
+                    <td>{{ marketplace.id }}</td>
+                    <td>{{ marketplace.name }}</td>
+                    <td>{{ marketplace.description }}</td>
                 </tr>
         {% endfor %}
     </table>
