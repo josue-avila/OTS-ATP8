@@ -4,10 +4,13 @@ from backend.helpers.connection_db import *
 # Método de persistência de uma nova categoria no banco de dados
 # name = nome da nova categoria cadastrada
 # desc = descrição da nova categoria cadastrada
-def add_new_category_db(name: str, desc: str) -> bool:
+from backend.models.category import Category
+
+
+def add_new_category_db(category: Category) -> bool:
     try:
         cursor.execute(
-            f"INSERT INTO categoria(nome, descricao) VALUES('{name}','{desc}');")
+            f"INSERT INTO categoria(nome, descricao) VALUES('{category.name}','{category.description}');")
         con.commit()
         # cursor.close()
         # con.close()
@@ -21,7 +24,10 @@ def add_new_category_db(name: str, desc: str) -> bool:
 def read_categories_db() -> list:
     cursor.execute('SELECT * FROM categoria;')
     categories = cursor.fetchall()
-    con.commit()
+    list_categories = []
+    for tuple in categories:
+        category = Category(tuple[1],tuple[2],tuple[0])
+        list_categories.append(category)
     # cursor.close()
     # con.close()
-    return categories
+    return list_categories

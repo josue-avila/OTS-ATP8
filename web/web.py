@@ -61,9 +61,9 @@ def list_categories():
 
     cat = request.form.get('name')
     cat_desc = request.form.get('description')
-    if cat != None:
-        add_new_category(cat, cat_desc)
-        #search_category(cat, cat_desc)
+    category = Category(cat, cat_desc)
+    if category != None:
+        add_new_category(category)
     categories = read_categories()
     return render_template('categories_list.html', title='Categories', list=categories)
 

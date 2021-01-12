@@ -15,9 +15,9 @@
         </tr>
         {% for  category in list %}
                 <tr>
-                    <td>{{ category[0] }}</td>
-                    <td>{{ category[1] }}</td>
-                    <td>{{ category[2] }}</td>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.description }}</td>
                 </tr>
         {% endfor %}
     </table>
