@@ -4,9 +4,9 @@ sys.path.append('.')
 from backend.dao.seller_dao import *
 from backend.controllers.log_controller import *
 
-def save_seller(seller) -> None:
-    if isinstance(seller.get('fullname'), str) and isinstance(seller.get('phone'), str) and isinstance(seller.get('email'), str):
-        save_seller_db(seller.get('fullname'), seller.get('phone'), seller.get('email'))
+def save_seller(seller: Seller) -> None:
+    if isinstance(seller.fullname, str) and isinstance(seller.phone, str) and isinstance(seller.email, str):
+        save_seller_db(seller)
 
     create_log('set', 'save_sellers')
 

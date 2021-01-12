@@ -79,12 +79,14 @@ def form_seller():
 
 @app.route('/sellers', methods=["GET", "POST"])
 def seller_list():
-    save = 'false'
-    if request.method == 'POST':
-        save_seller(request.form)
-        save = 'true'
+    fullname = request.form.get('fullname')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    seller = Seller(fullname, phone, email)
+    if seller != None:
+        save_seller(seller)
     sellers = read_sellers()
-    return render_template('seller_list.html', title='Sellers', list=sellers, save=save)
+    return render_template('seller_list.html', title='Sellers', list=sellers)
 
 
 # LOGS
