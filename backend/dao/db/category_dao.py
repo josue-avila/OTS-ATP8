@@ -1,12 +1,8 @@
 from backend.helpers.connection_db import *
-
-
-# Método de persistência de uma nova categoria no banco de dados
-# name = nome da nova categoria cadastrada
-# desc = descrição da nova categoria cadastrada
 from backend.models.category import Category
 
 
+# Método de persistência de uma nova categoria no banco de dados
 def save_category_db(category: Category) -> bool:
     try:
         cursor.execute(

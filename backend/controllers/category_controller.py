@@ -1,8 +1,5 @@
-import sys
-sys.path.append('.')
-from backend.controllers.log_controller import *
-from backend.dao.category_dao import *
-from backend.dao_txt.category_dao_txt import *
+from backend.controllers.log_controller import save_log
+from backend.dao.db.category_dao import save_category_db, read_categories_db
 from backend.models.category import Category
 
 

@@ -1,7 +1,5 @@
-import sys
-sys.path.append('.')
-from backend.dao.log_dao import *
-from backend.dao_txt.log_dao_txt import *
+from backend.dao.db.log_dao import save_log_db, read_logs_db
+from backend.models.log import Log
 
 
 def save_log(operation: str, description: str) -> None:

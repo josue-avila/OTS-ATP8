@@ -1,5 +1,5 @@
 from backend.helpers.write_file import *
-cat_file = "backend/db/categories.txt"
+cat_file = "backend/files/categories.txt"
 
 
 # Método de persistência de uma nova categoria no arquivo txt
@@ -17,7 +17,7 @@ def save_category_txt(name: str, desc: str) -> bool:
 # Método de consulta de todas as categorias
 # gravadas no arquivo categories.txt
 def read_categories_txt() -> list:
-    file = open('backend/db/categories.txt', 'r')
+    file = open('backend/files/categories.txt', 'r')
     categories = []
     for line in file:
         line_by_comas = line.strip().split(';')

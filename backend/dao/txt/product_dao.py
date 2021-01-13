@@ -1,4 +1,4 @@
-root = 'backend/db/products.txt'
+root = 'backend/files/products.txt'
 
 
 # Método de persistência de um novo produto no arquivo txt

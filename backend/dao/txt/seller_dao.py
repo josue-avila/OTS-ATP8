@@ -1,9 +1,9 @@
 import sys
-sys.path.append('.')
+sys.path.append('')
 
 from backend.helpers.write_file import *
 
-root = './backend/db/sellers.txt'
+root = './backend/files/sellers.txt'
 
 def read_sellers_txt() -> list:
     file = open(root, 'r')
