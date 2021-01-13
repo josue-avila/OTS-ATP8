@@ -1,4 +1,3 @@
 def write_file(path: str, line: str) -> None:
-    file = open(path, 'a')
-    file.write(f'{line}\n')
-    file.close()
+    with open(path, 'a') as file:
+        file.write(f'{line}\n')

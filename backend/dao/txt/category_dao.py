@@ -17,12 +17,11 @@ def save_category_txt(name: str, desc: str) -> bool:
 # Método de consulta de todas as categorias
 # gravadas no arquivo categories.txt
 def read_categories_txt() -> list:
-    file = open('backend/files/categories.txt', 'r')
     categories = []
-    for line in file:
-        line_by_comas = line.strip().split(';')
-        categories.append(line_by_comas)
-    file.close()
+    with open('backend/files/categories.txt', 'r') as file:
+        for line in file:
+            line_by_comas = line.strip().split(';')
+            categories.append(line_by_comas)
     return categories
 
 
