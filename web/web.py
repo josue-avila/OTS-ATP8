@@ -66,7 +66,7 @@ def list_categories():
     cat_desc = request.form.get('description')
     category = Category(cat, cat_desc)
     if category != None:
-        add_new_category(category)
+        save_category(category)
     categories = read_categories()
     return render_template('categories_list.html', title='Categories', list=categories)
 

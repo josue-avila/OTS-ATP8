@@ -7,7 +7,7 @@ from backend.helpers.connection_db import *
 from backend.models.category import Category
 
 
-def add_new_category_db(category: Category) -> bool:
+def save_category_db(category: Category) -> bool:
     try:
         cursor.execute(
             f"INSERT INTO categoria(nome, descricao) VALUES('{category.name}','{category.description}');")

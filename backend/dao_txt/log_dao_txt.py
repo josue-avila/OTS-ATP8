@@ -4,7 +4,7 @@ from backend.helpers.write_file import *
 root = 'backend/logs/logs.txt'
 
 
-def create_log_txt(type_: str, file_name: str):
+def save_log_txt(type_: str, file_name: str):
     file = open(root, "a")
     data = datetime.datetime.now()
     data_format = data.strftime("%d/%m/%Y %H:%M:%S")

@@ -5,7 +5,7 @@ cat_file = "backend/db/categories.txt"
 # Método de persistência de uma nova categoria no arquivo txt
 # name = nome da nova categoria cadastrada
 # desc = descrição da nova categoria cadastrada
-def add_new_category_txt(name: str, desc: str) -> bool:
+def save_category_txt(name: str, desc: str) -> bool:
     try:
         linha = f'{name};{desc}'
         write_file(cat_file, linha)
@@ -33,4 +33,4 @@ def search_category_txt(name: str, desc: str):
     for cat in categories_list:
         categories_names.append(cat[0])
     if not name in categories_names:
-        add_new_category_txt(name, desc)
+        save_category_txt(name, desc)
