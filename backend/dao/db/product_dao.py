@@ -19,7 +19,7 @@ def save_product_db(product: Product) -> bool:
 # Método de consulta de todos os produtos
 # gravadas no banco de dados
 def read_products_db():
-    cursor.execute('SELECT * FROM produto;')
+    cursor.execute('SELECT * FROM produto ORDER BY id;')
     result = cursor.fetchall()
     list_products= []
     for tuple in result:

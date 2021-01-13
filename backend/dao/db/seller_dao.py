@@ -4,7 +4,7 @@ from backend.models.seller import Seller
 
 def read_sellers_db() -> list:
 
-    cursor.execute('select * from seller')
+    cursor.execute('SELECT * FROM seller ORDER BY id')
     sellers = cursor.fetchall()
     list_sellers = []
     for tuple in sellers:

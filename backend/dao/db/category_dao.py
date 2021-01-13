@@ -16,7 +16,7 @@ def save_category_db(category: Category) -> bool:
 # Método de consulta de todas as categorias
 # gravadas no banco de dados
 def read_categories_db() -> list:
-    cursor.execute('SELECT * FROM categoria;')
+    cursor.execute('SELECT * FROM categoria ORDER BY id;')
     categories = cursor.fetchall()
     list_categories = []
     for tuple in categories:

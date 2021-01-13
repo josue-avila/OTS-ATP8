@@ -3,7 +3,7 @@ from backend.models.marketplace import Marketplace
 
 
 def read_marketplaces_db() -> list:
-    cursor.execute('SELECT * FROM marketplace')
+    cursor.execute('SELECT * FROM marketplace ORDER BY id')
     marketplaces = cursor.fetchall()
     list_marketplaces = []
     for tuple in marketplaces:
