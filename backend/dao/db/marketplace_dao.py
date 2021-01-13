@@ -18,3 +18,14 @@ def save_marketplace_db(marketplace: Marketplace) -> None:
         return True
     except Exception as e:
         return False
+
+    
+def read_marketplace_db(id: int) -> Marketplace:
+    cursor.execute(f"SELECT * FROM marketplace WHERE id = {id};")
+    tuple = cursor.fetchall()[0]
+    marketplace = Marketplace(tuple[1], tuple[2], tuple[0])
+    return marketplace
+
+
+def update_marketplace_db(marketplace: Marketplace) -> None:
+    cursor.execute(f"UPDATE marketplace SET nome = '{marketplace.name}', descricao = '{marketplace.description}' WHERE id = {marketplace.id};")
