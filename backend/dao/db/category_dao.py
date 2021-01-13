@@ -8,8 +8,6 @@ def save_category_db(category: Category) -> bool:
         cursor.execute(
             f"INSERT INTO categoria(nome, descricao) VALUES('{category.name}','{category.description}');")
         con.commit()
-        # cursor.close()
-        # con.close()
         return True
     except Exception as e:
         return False
@@ -24,6 +22,4 @@ def read_categories_db() -> list:
     for tuple in categories:
         category = Category(tuple[1],tuple[2],tuple[0])
         list_categories.append(category)
-    # cursor.close()
-    # con.close()
     return list_categories
