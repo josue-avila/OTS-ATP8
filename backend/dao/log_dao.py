@@ -1,13 +1,11 @@
 import datetime as datetime
 from backend.helpers.connection_db import *
+from backend.models.log import Log
 
 
-def create_log_db(type_: str, file_name: str):
+def create_log_db(log: Log):
     try:
-        data = datetime.datetime.now()
-        data_format = data.strftime("%d/%m/%Y %H:%M:%S")
-        info = f"{data_format}=> Acesso a função: {file_name}"
-        cursor.execute(f"INSERT INTO logs (operacao, descricao) VALUES('{type_}','{info}');")
+        cursor.execute(f"INSERT INTO logs (timestamp, operacao, descricao) VALUES('{log.timestamp}','{log.operation}', '{log.description}');")
         con.commit()
         return True
     except Exception as e:
@@ -17,5 +15,8 @@ def create_log_db(type_: str, file_name: str):
 def read_logs_db():
     cursor.execute('SELECT * FROM logs;')
     result = cursor.fetchall()
-    con.commit()
+    list_logs = []
+    for tuple in result:
+        log = Log(tuple[2], tuple[3], tuple[0], tuple[1])
+        list_logs.append(log)
     return result

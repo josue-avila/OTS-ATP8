@@ -26,23 +26,26 @@ def form_product():
 
 @app.route('/products', methods=["GET", "POST"])
 def product_list():
-    save = 'false'
-    if request.method == 'POST':
-        save_product(request.form)
-        save = 'true'
+    name = request.form.get('name')
+    description = request.form.get('description')
+    price = request.form.get('price')
+    product = Product(name, description, price)
+    if product != None:
+        save_product(product)
     products = read_products()
-    return render_template('product_list.html', title='Produtos', list=products, save=save)
+    return render_template('product_list.html', title='Products', list=products)
 
 
 # MARKETPLACES
 @app.route('/marketplaces', methods=['GET', 'POST'])
 def list_marketplace():
-    save = 'false'
-    if request.method == 'POST':
-        save_marketplace(request.form)
-        save = 'true'
+    name = request.form.get('name')
+    description = request.form.get('description')
+    marketplace = Marketplace(name, description)
+    if marketplace != None:
+        save_marketplace(marketplace)
     marketplaces = read_marketplaces()
-    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces, save=save)
+    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces)
 
 
 @app.route('/create_marketplace')
@@ -61,9 +64,9 @@ def list_categories():
 
     cat = request.form.get('name')
     cat_desc = request.form.get('description')
-    if cat != None:
-        add_new_category(cat, cat_desc)
-        #search_category(cat, cat_desc)
+    category = Category(cat, cat_desc)
+    if category != None:
+        add_new_category(category)
     categories = read_categories()
     return render_template('categories_list.html', title='Categories', list=categories)
 
@@ -76,12 +79,14 @@ def form_seller():
 
 @app.route('/sellers', methods=["GET", "POST"])
 def seller_list():
-    save = 'false'
-    if request.method == 'POST':
-        save_seller(request.form)
-        save = 'true'
+    fullname = request.form.get('fullname')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    seller = Seller(fullname, phone, email)
+    if seller != None:
+        save_seller(seller)
     sellers = read_sellers()
-    return render_template('seller_list.html', title='Sellers', list=sellers, save=save)
+    return render_template('seller_list.html', title='Sellers', list=sellers)
 
 
 # LOGS

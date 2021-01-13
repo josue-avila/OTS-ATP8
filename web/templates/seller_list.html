@@ -16,10 +16,10 @@
         </tr>
         {% for seller in list %}
                 <tr>
-                    <td>{{ seller[0] }}</td>
-                    <td>{{ seller[1] }}</td>
-                    <td>{{ seller[2] }}</td>
-                    <td>{{ seller[3] }}</td>
+                    <td>{{ seller.id }}</td>
+                    <td>{{ seller.fullname }}</td>
+                    <td>{{ seller.phone }}</td>
+                    <td>{{ seller.email }}</td>
                 </tr>
         {% endfor %}
     </table>

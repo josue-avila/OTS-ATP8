@@ -4,8 +4,9 @@ from backend.dao.log_dao import *
 from backend.dao_txt.log_dao_txt import *
 
 
-def create_log(type_: str, file_name: str) -> None:
-    create_log_db(type_, file_name)
+def create_log(operation: str, description: str) -> None:
+    log = Log(operation, description)
+    create_log_db(log)
 
 
 def read_logs() -> list:
