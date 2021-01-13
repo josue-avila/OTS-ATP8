@@ -35,6 +35,18 @@ def list_product():
     return render_template('product_list.html', title='Products', list=products)
 
 
+@app.route('/products/<int:id>', methods=['GET', 'POST'])
+def edit_product(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        price = request.form.get('price')
+        new_product = Product(name, desc, price, id)
+        update_product(new_product)
+    product = read_product(id)
+    return render_template('product.html', title='Product', object=product)
+
+
 # MARKETPLACES
 @app.route('/marketplaces', methods=['GET', 'POST'])
 def list_marketplace():
