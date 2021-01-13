@@ -1,6 +1,6 @@
 import sys
 sys.path.append('.')
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from backend.controllers.marketplace_controller import *
 from backend.controllers.category_controller import *
 from backend.controllers.seller_controller import *
@@ -67,6 +67,17 @@ def list_categories():
         save_category(category)
     categories = read_categories()
     return render_template('categories_list.html', title='Categories', list=categories)
+
+
+@app.route('/categories/<int:id>', methods=['GET', 'POST'])
+def edit_category(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        new_category = Category(name, desc, id)
+        update_category(new_category)
+    category = read_category(id)
+    return render_template('category.html', title='Category', object=category)
 
 
 # SELLERS
