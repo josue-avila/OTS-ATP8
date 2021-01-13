@@ -23,3 +23,11 @@ def read_categories_db() -> list:
         category = Category(tuple[1],tuple[2],tuple[0])
         list_categories.append(category)
     return list_categories
+
+
+def read_category_db(id: int) -> Category:
+    cursor.execute(f"SELECT * FROM categoria WHERE id = {id};")
+    tuple = cursor.fetchall()[0]
+    category = Category(tuple[1], tuple[2], tuple[0])
+    return category
+
