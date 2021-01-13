@@ -52,6 +52,17 @@ def new_marketplace():
     return render_template('create_marketplace.html', title='Novo Marketplace')
 
 
+@app.route('/marketplaces/<int:id>', methods=['GET', 'POST'])
+def edit_marketplace(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        new_marketplace = Marketplace(name, desc, id)
+        update_marketplace(new_marketplace)
+    marketplace = read_marketplace(id)
+    return render_template('marketplace.html', title='Marketplace', object=marketplace)
+
+
 # CATEGORIAS
 @app.route('/create_category')
 def new_category():
