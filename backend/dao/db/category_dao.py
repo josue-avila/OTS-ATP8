@@ -31,3 +31,6 @@ def read_category_db(id: int) -> Category:
     category = Category(tuple[1], tuple[2], tuple[0])
     return category
 
+
+def update_category_db(category: Category) -> None:
+    cursor.execute(f"UPDATE categoria SET nome = '{category.name}', descricao = '{category.description}' WHERE id = {category.id};")
