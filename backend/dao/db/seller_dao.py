@@ -31,3 +31,7 @@ def read_seller_db(id: int) -> Seller:
 
 def update_seller_db(seller: Seller) -> None:
     cursor.execute(f"UPDATE seller SET nome = '{seller.fullname}', telefone = '{seller.phone}', email = '{seller.email}' WHERE id = {seller.id};")
+
+
+def delete_seller_db(id: int) -> None:
+    cursor.execute(f"DELETE FROM seller WHERE id={id};")

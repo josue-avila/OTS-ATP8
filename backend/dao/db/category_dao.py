@@ -34,3 +34,7 @@ def read_category_db(id: int) -> Category:
 
 def update_category_db(category: Category) -> None:
     cursor.execute(f"UPDATE categoria SET nome = '{category.name}', descricao = '{category.description}' WHERE id = {category.id};")
+
+
+def delete_category_db(id: int) -> None:
+    cursor.execute(f"DELETE FROM categoria WHERE id={id};")

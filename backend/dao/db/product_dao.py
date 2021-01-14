@@ -37,3 +37,7 @@ def read_product_db(id: int) -> Product:
 
 def update_product_db(product: Product) -> None:
     cursor.execute(f"UPDATE produto SET nome = '{product.name}', descricao = '{product.description}', preco = '{product.price}' WHERE id = {product.id};")
+
+
+def delete_product_db(id: int) -> None:
+    cursor.execute(f"DELETE FROM produto WHERE id={id};")

@@ -1,4 +1,5 @@
-from backend.dao.db.seller_dao import save_seller_db, read_sellers_db, read_seller_db, update_seller_db
+from backend.dao.db.seller_dao import save_seller_db, read_sellers_db, read_seller_db, update_seller_db, \
+    delete_seller_db
 from backend.controllers.log_controller import save_log
 from backend.models.seller import Seller
 
@@ -28,3 +29,8 @@ def update_seller(seller: Seller) -> None:
     new_seller.email = seller.email
     update_seller_db(new_seller)
     save_log('update', 'seller')
+
+
+def delete_seller(id: int) -> None:
+    delete_seller_db(id)
+    save_log('delete', 'seller')

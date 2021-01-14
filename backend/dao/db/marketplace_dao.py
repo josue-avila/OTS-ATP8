@@ -29,3 +29,7 @@ def read_marketplace_db(id: int) -> Marketplace:
 
 def update_marketplace_db(marketplace: Marketplace) -> None:
     cursor.execute(f"UPDATE marketplace SET nome = '{marketplace.name}', descricao = '{marketplace.description}' WHERE id = {marketplace.id};")
+
+
+def delete_marketplace_db(id: int) -> None:
+    cursor.execute(f"DELETE FROM marketplace WHERE id={id};")

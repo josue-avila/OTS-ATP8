@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append('.')
 from flask import Flask, render_template, request, redirect, url_for
 from backend.controllers.marketplace_controller import *
@@ -6,7 +7,6 @@ from backend.controllers.category_controller import *
 from backend.controllers.seller_controller import *
 from backend.controllers.log_controller import *
 from backend.controllers.product_controller import *  # pylint: disable=import-error
-
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -48,6 +48,12 @@ def edit_product(id: int):
     return render_template('edit_product.html', title='Product', object=product)
 
 
+@app.route('/products/<int:id>/delete', methods=['GET'])
+def erase_product(id: int):
+    delete_product(id)
+    return redirect(url_for('list_product'))
+
+
 # MARKETPLACES
 @app.route('/marketplaces', methods=['GET', 'POST'])
 def list_marketplace():
@@ -75,6 +81,12 @@ def edit_marketplace(id: int):
         return redirect(url_for('list_marketplace'))
     marketplace = read_marketplace(id)
     return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
+
+
+@app.route('/marketplaces/<int:id>/delete', methods=['GET'])
+def erase_marketplace(id: int):
+    delete_marketplace(id)
+    return redirect(url_for('list_marketplace'))
 
 
 # CATEGORIAS
@@ -106,6 +118,12 @@ def edit_category(id: int):
     return render_template('edit_category.html', title='Category', object=category)
 
 
+@app.route('/categories/<int:id>/delete', methods=['GET'])
+def erase_category(id: int):
+    delete_category(id)
+    return redirect(url_for('list_category'))
+
+
 # SELLERS
 @app.route('/create_seller')
 def new_seller():
@@ -135,6 +153,12 @@ def edit_seller(id: int):
         return redirect(url_for('list_seller'))
     seller = read_seller(id)
     return render_template('edit_seller.html', title='Seller', object=seller)
+
+
+@app.route('/sellers/<int:id>/delete', methods=['GET'])
+def erase_seller(id: int):
+    delete_seller(id)
+    return redirect(url_for('list_seller'))
 
 
 # LOGS
