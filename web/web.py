@@ -124,6 +124,19 @@ def list_seller():
     return render_template('seller_list.html', title='Sellers', list=sellers)
 
 
+@app.route('/sellers/<int:id>', methods=['GET', 'POST'])
+def edit_seller(id: int):
+    if request.method == "POST":
+        fullname = request.form.get('fullname')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        new_seller = Seller(fullname, phone, email, id)
+        update_seller(new_seller)
+        return redirect(url_for('list_seller'))
+    seller = read_seller(id)
+    return render_template('seller.html', title='Seller', object=seller)
+
+
 # LOGS
 @app.route('/logs', methods=["GET", "POST"])
 def list_logs():
