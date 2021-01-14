@@ -22,7 +22,7 @@ def read_categories() -> list:
 
 def read_category(id: int) -> Category:
     category = read_category_db(id)
-    save_log('read', 'category')
+    save_log('get', 'category')
     return category
 
 

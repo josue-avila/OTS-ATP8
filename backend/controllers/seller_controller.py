@@ -18,7 +18,7 @@ def read_sellers() -> list:
 
 def read_seller(id: int) -> Seller:
     seller = read_seller_db(id)
-    save_log('read', 'seller')
+    save_log('get', 'seller')
     return seller
 
 

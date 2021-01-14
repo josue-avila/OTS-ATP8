@@ -9,34 +9,25 @@
             <th>Descrição</th>
         </tr>
         {% for log in list %}
-        {% if log[2] == "get" %}
-        <tr style="color: blue">
-            <td>{{ log[1] }}</td>
-            <td>{{ log[2] }}</td>
-            <td>{{ log[3] }}</td>
-        </tr>
-        {% endif %}
-        {% if log[2] == "set" %}
-        <tr style="color: green">
-            <td>{{ log[1] }}</td>
-            <td>{{ log[2] }}</td>
-            <td>{{ log[3] }}</td>
-        </tr>
-        {% endif %}
-        {% if log[2] == "update" %}
-        <tr style="color: yellow">
-            <td>{{ log[1] }}</td>
-            <td>{{ log[2] }}</td>
-            <td>{{ log[3] }}</td>
-        </tr>
-        {% endif %}
-        {% if log[2] == "delete" %}
-        <tr style="color: red">
-            <td>{{ log[1] }}</td>
-            <td>{{ log[2] }}</td>
-            <td>{{ log[3] }}</td>
-        </tr>
-        {% endif %}
+            {% if log.operation == "get" %}
+                <tr style="color: blue">
+            {% endif %}
+
+            {% if log.operation == "set" %}
+                <tr style="color: green">
+            {% endif %}
+            
+            {% if log.operation == "update" %}
+                <tr style="color: yellow">
+            {% endif %}
+            
+            {% if log.operation == "delete" %}
+                <tr style="color: red">
+            {% endif %}
+                    <td>{{ log.timestamp }}</td>
+                    <td>{{ log.operation }}</td>
+                    <td>{{ log.description }}</td>
+                </tr>
         {% endfor %}
     </table>
 </div>
