@@ -23,11 +23,7 @@ def read_seller(id: int) -> Seller:
 
 
 def update_seller(seller: Seller) -> None:
-    new_seller = read_seller(seller.id)
-    new_seller.fullname = seller.fullname
-    new_seller.phone = seller.phone
-    new_seller.email = seller.email
-    update_seller_db(new_seller)
+    update_seller_db(seller)
     save_log('update', 'seller')
 
 
