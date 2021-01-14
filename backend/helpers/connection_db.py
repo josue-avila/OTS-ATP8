@@ -6,5 +6,5 @@ password = 'olist123'
 database = 'topskills11'
 
 connection_string = f'host={host} user={user} dbname={database} password={password}'
-con = psycopg2.connect(connection_string)
-cursor = con.cursor()
+with psycopg2.connect(connection_string) as con:
+    cursor = con.cursor()

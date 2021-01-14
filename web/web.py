@@ -18,19 +18,18 @@ def menu():
 
 
 # PRODUTOS
-@app.route('/create-product')
-def form_product():
-    products = read_products()
-    return render_template('create_product.html', title='Produtos', list=products)
+@app.route('/create_product')
+def new_product():
+    return render_template('create_product.html', title='Novo produto')
 
 
 @app.route('/products', methods=["GET", "POST"])
-def product_list():
-    name = request.form.get('name')
-    description = request.form.get('description')
-    price = request.form.get('price')
-    product = Product(name, description, price)
-    if product != None:
+def list_product():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        price = request.form.get('price')
+        product = Product(name, description, price)
         save_product(product)
     products = read_products()
     return render_template('product_list.html', title='Products', list=products)
@@ -39,10 +38,10 @@ def product_list():
 # MARKETPLACES
 @app.route('/marketplaces', methods=['GET', 'POST'])
 def list_marketplace():
-    name = request.form.get('name')
-    description = request.form.get('description')
-    marketplace = Marketplace(name, description)
-    if marketplace != None:
+    if request.method == "POST":
+        name = request.form.get('name')
+        description = request.form.get('description')
+        marketplace = Marketplace(name, description)
         save_marketplace(marketplace)
     marketplaces = read_marketplaces()
     return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces)
@@ -61,29 +60,28 @@ def new_category():
 
 @app.route('/categories', methods=['GET', 'POST'])
 def list_categories():
-
-    cat = request.form.get('name')
-    cat_desc = request.form.get('description')
-    category = Category(cat, cat_desc)
-    if category != None:
-        add_new_category(category)
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        category = Category(name, desc)
+        save_category(category)
     categories = read_categories()
     return render_template('categories_list.html', title='Categories', list=categories)
 
 
 # SELLERS
-@app.route('/create-seller')
-def form_seller():
-    return render_template('create_seller.html', title='Sellers')
+@app.route('/create_seller')
+def new_seller():
+    return render_template('create_seller.html', title='Novo seller')
 
 
 @app.route('/sellers', methods=["GET", "POST"])
-def seller_list():
-    fullname = request.form.get('fullname')
-    phone = request.form.get('phone')
-    email = request.form.get('email')
-    seller = Seller(fullname, phone, email)
-    if seller != None:
+def list_seller():
+    if request.method == "POST":
+        fullname = request.form.get('fullname')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        seller = Seller(fullname, phone, email)
         save_seller(seller)
     sellers = read_sellers()
     return render_template('seller_list.html', title='Sellers', list=sellers)
@@ -91,7 +89,7 @@ def seller_list():
 
 # LOGS
 @app.route('/logs', methods=["GET", "POST"])
-def logs_list():
+def list_logs():
     return render_template('logs_list.html', title='Logs', list=read_logs())
 
 

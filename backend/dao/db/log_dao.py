@@ -3,7 +3,7 @@ from backend.helpers.connection_db import *
 from backend.models.log import Log
 
 
-def create_log_db(log: Log):
+def save_log_db(log: Log):
     try:
         cursor.execute(f"INSERT INTO logs (timestamp, operacao, descricao) VALUES('{log.timestamp}','{log.operation}', '{log.description}');")
         con.commit()

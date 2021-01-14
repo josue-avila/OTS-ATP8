@@ -1,21 +1,18 @@
-import sys
-
-sys.path.append('.')
-
-from backend.dao.marketplace_dao import *
-from backend.controllers.log_controller import *
+from backend.dao.db.marketplace_dao import read_marketplaces_db, save_marketplace_db
+from backend.controllers.log_controller import save_log
+from backend.models.marketplace import Marketplace
 
 
 def save_marketplace(marketplace: Marketplace) -> None:
     if isinstance(marketplace.name, str) and isinstance(marketplace.description, str):
         save_marketplace_db(marketplace)
 
-    create_log('set', 'marketplace')
+    save_log('set', 'marketplace')
 
 
 def read_marketplaces() -> list:
-    marketplaces = read_marketplace_db()
+    marketplaces = read_marketplaces_db()
 
-    create_log('get', 'marketplaces')
+    save_log('get', 'marketplaces')
 
     return marketplaces

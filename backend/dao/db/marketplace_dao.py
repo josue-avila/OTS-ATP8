@@ -2,7 +2,7 @@ from backend.helpers.connection_db import *
 from backend.models.marketplace import Marketplace
 
 
-def read_marketplace_db() -> list:
+def read_marketplaces_db() -> list:
     cursor.execute('SELECT * FROM marketplace')
     marketplaces = cursor.fetchall()
     list_marketplaces = []
