@@ -1,6 +1,6 @@
 import sys
 sys.path.append('.')
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from backend.controllers.marketplace_controller import *
 from backend.controllers.category_controller import *
 from backend.controllers.seller_controller import *
@@ -43,6 +43,7 @@ def edit_product(id: int):
         price = request.form.get('price')
         new_product = Product(name, desc, price, id)
         update_product(new_product)
+        return redirect(url_for('list_product'))
     product = read_product(id)
     return render_template('product.html', title='Product', object=product)
 
@@ -71,6 +72,7 @@ def edit_marketplace(id: int):
         desc = request.form.get('description')
         new_marketplace = Marketplace(name, desc, id)
         update_marketplace(new_marketplace)
+        return redirect(url_for('list_marketplace'))
     marketplace = read_marketplace(id)
     return render_template('marketplace.html', title='Marketplace', object=marketplace)
 
@@ -99,6 +101,7 @@ def edit_category(id: int):
         desc = request.form.get('description')
         new_category = Category(name, desc, id)
         update_category(new_category)
+        return redirect(url_for('list_category'))
     category = read_category(id)
     return render_template('category.html', title='Category', object=category)
 
