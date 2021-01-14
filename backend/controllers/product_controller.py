@@ -27,11 +27,7 @@ def read_product(id: int) -> Product:
 
 
 def update_product(product: Product) -> None:
-    new_product = read_product(product.id)
-    new_product.name = product.name
-    new_product.description = product.description
-    new_product.price = product.price
-    update_product_db(new_product)
+    update_product_db(product)
     save_log('update', 'product')
 
 

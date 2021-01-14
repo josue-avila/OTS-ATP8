@@ -24,10 +24,7 @@ def read_marketplace(id: int) -> Marketplace:
 
 
 def update_marketplace(marketplace: Marketplace) -> None:
-    new_marketplace = read_marketplace(marketplace.id)
-    new_marketplace.name = marketplace.name
-    new_marketplace.description = marketplace.description
-    update_marketplace_db(new_marketplace)
+    update_marketplace_db(marketplace)
     save_log('update', 'marketplace')
 
 

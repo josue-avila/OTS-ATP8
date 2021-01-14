@@ -27,10 +27,7 @@ def read_category(id: int) -> Category:
 
 
 def update_category(category: Category) -> None:
-    new_category = read_category(category.id)
-    new_category.name = category.name
-    new_category.description = category.description
-    update_category_db(new_category)
+    update_category_db(category)
     save_log('update', 'category')
 
 
