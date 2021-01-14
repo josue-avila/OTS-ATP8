@@ -13,6 +13,7 @@
             <th>Nome Completo</th>
             <th>Telefone</th>
             <th>E-mail</th>
+            <th>Ação</th>
         </tr>
         {% for seller in list %}
                 <tr>
@@ -20,6 +21,11 @@
                     <td>{{ seller.fullname }}</td>
                     <td>{{ seller.phone }}</td>
                     <td>{{ seller.email }}</td>
+                    <td>
+                        <a href='/sellers/{{ seller.id }}' class="link-button">
+                            <p>Editar</p>
+                        </a>
+                    </td>
                 </tr>
         {% endfor %}
     </table>
