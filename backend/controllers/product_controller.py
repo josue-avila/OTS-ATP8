@@ -22,7 +22,7 @@ def save_product(product: Product) -> None:
 
 def read_product(id: int) -> Product:
     product = read_product_db(id)
-    save_log('read', 'product')
+    save_log('get', 'product')
     return product
 
 

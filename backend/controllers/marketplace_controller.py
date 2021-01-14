@@ -19,7 +19,7 @@ def read_marketplaces() -> list:
 
 def read_marketplace(id: int) -> Marketplace:
     marketplace = read_marketplace_db(id)
-    save_log('read', 'marketplace')
+    save_log('get', 'marketplace')
     return marketplace
 
 
