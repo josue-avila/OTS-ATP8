@@ -32,7 +32,7 @@ def list_product():
         product = Product(name, description, price)
         save_product(product)
     products = read_products()
-    return render_template('product_list.html', title='Products', list=products)
+    return render_template('list_product.html', title='Products', list=products)
 
 
 @app.route('/products/<int:id>', methods=['GET', 'POST'])
@@ -45,7 +45,7 @@ def edit_product(id: int):
         update_product(new_product)
         return redirect(url_for('list_product'))
     product = read_product(id)
-    return render_template('product.html', title='Product', object=product)
+    return render_template('edit_product.html', title='Product', object=product)
 
 
 # MARKETPLACES
@@ -57,7 +57,7 @@ def list_marketplace():
         marketplace = Marketplace(name, description)
         save_marketplace(marketplace)
     marketplaces = read_marketplaces()
-    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces)
+    return render_template('list_marketplace.html', title='Marketplaces', list=marketplaces)
 
 
 @app.route('/create_marketplace')
@@ -74,7 +74,7 @@ def edit_marketplace(id: int):
         update_marketplace(new_marketplace)
         return redirect(url_for('list_marketplace'))
     marketplace = read_marketplace(id)
-    return render_template('marketplace.html', title='Marketplace', object=marketplace)
+    return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
 
 
 # CATEGORIAS
@@ -91,7 +91,7 @@ def list_category():
         category = Category(name, desc)
         save_category(category)
     categories = read_categories()
-    return render_template('categories_list.html', title='Categories', list=categories)
+    return render_template('list_category.html', title='Categories', list=categories)
 
 
 @app.route('/categories/<int:id>', methods=['GET', 'POST'])
@@ -103,7 +103,7 @@ def edit_category(id: int):
         update_category(new_category)
         return redirect(url_for('list_category'))
     category = read_category(id)
-    return render_template('category.html', title='Category', object=category)
+    return render_template('edit_category.html', title='Category', object=category)
 
 
 # SELLERS
@@ -121,7 +121,7 @@ def list_seller():
         seller = Seller(fullname, phone, email)
         save_seller(seller)
     sellers = read_sellers()
-    return render_template('seller_list.html', title='Sellers', list=sellers)
+    return render_template('list_seller.html', title='Sellers', list=sellers)
 
 
 @app.route('/sellers/<int:id>', methods=['GET', 'POST'])
@@ -134,13 +134,13 @@ def edit_seller(id: int):
         update_seller(new_seller)
         return redirect(url_for('list_seller'))
     seller = read_seller(id)
-    return render_template('seller.html', title='Seller', object=seller)
+    return render_template('edit_seller.html', title='Seller', object=seller)
 
 
 # LOGS
 @app.route('/logs', methods=["GET", "POST"])
 def list_logs():
-    return render_template('logs_list.html', title='Logs', list=read_logs())
+    return render_template('list_log.html', title='Logs', list=read_logs())
 
 
 app.run(debug=True)
