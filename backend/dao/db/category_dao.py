@@ -1,50 +1,35 @@
-from backend.helpers.connection_db import *
+from backend.dao.db.base_dao import BaseDao
 from backend.models.category import Category
 
 
-# Método de persistência de uma nova categoria no banco de dados
-def save_category_db(category: Category) -> None:
-    try:
-        with Connection() as con:
-            cursor = con.cursor()
-            cursor.execute(
-                f"INSERT INTO categoria(nome, descricao) VALUES('{category.name}','{category.description}');")
-            con.commit()
-    except Exception as e:
-        print(e)
+class CategoryDao(BaseDao):
+    def create(self, model: Category) -> None:
+        query = f"""INSERT INTO categoria(nome, descricao) VALUES('{model.name}','{model.description}');"""
+        super().execute(query)
 
 
-# Método de consulta de todas as categorias
-# gravadas no banco de dados
-def read_categories_db() -> list:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute('SELECT * FROM categoria ORDER BY id;')
-        categories = cursor.fetchall()
-        list_categories = []
-        for tuple in categories:
-            category = Category(tuple[1],tuple[2],tuple[0])
-            list_categories.append(category)
-        return list_categories
+    def read_all(self) -> list:
+        query = 'SELECT * FROM categoria ORDER BY id;'
+        result_list = super().read(query)
+        categories = []
+        for result in result_list:
+            category = Category(result[1], result[2], result[0])
+            categories.append(category)
+        return categories
 
 
-def read_category_db(id: int) -> Category:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"SELECT * FROM categoria WHERE id = {id};")
-        tuple = cursor.fetchall()[0]
-        category = Category(tuple[1], tuple[2], tuple[0])
+    def read_by_id(self, id: int) -> Category:
+        query = f"SELECT * FROM categoria WHERE id = {id};"
+        result = super().read(query)[0]
+        category = Category(result[1], result[2], result[0])
         return category
 
 
-def update_category_db(category: Category) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"UPDATE categoria SET nome = '{category.name}', descricao = '{category.description}' WHERE id = {category.id};")
-        con.commit()
+    def update(self, model: Category) -> None:
+        query = f"UPDATE categoria SET nome = '{model.name}', descricao = '{model.description}' WHERE id = {model.id};"
+        super().execute(query)
 
-def delete_category_db(id: int) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"DELETE FROM categoria WHERE id={id};")
-        con.commit()
+
+    def delete(self, id: int) -> None:
+        query = f"DELETE FROM categoria WHERE id={id};"
+        super().execute(query)
