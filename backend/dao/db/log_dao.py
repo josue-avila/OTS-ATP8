@@ -3,20 +3,24 @@ from backend.helpers.connection_db import *
 from backend.models.log import Log
 
 
-def save_log_db(log: Log):
+def save_log_db(log: Log) -> None:
     try:
-        cursor.execute(f"INSERT INTO logs (timestamp, operacao, descricao) VALUES('{log.timestamp}','{log.operation}', '{log.description}');")
-        con.commit()
-        return True
+        with Connection() as con:
+            cursor = con.cursor()
+            cursor.execute(
+                f"INSERT INTO logs (timestamp, operacao, descricao) VALUES('{log.timestamp}','{log.operation}', '{log.description}');")
+            con.commit()
     except Exception as e:
-        return False
+        print(e)
 
 
-def read_logs_db():
-    cursor.execute('SELECT * FROM logs ORDER BY id;')
-    result = cursor.fetchall()
-    list_logs = []
-    for tuple in result:
-        log = Log(tuple[2], tuple[3], tuple[0], tuple[1])
-        list_logs.append(log)
-    return result
+def read_logs_db() -> list:
+    with Connection() as con:
+        cursor = con.cursor()
+        cursor.execute('SELECT * FROM logs ORDER BY id;')
+        result = cursor.fetchall()
+        list_logs = []
+        for tuple in result:
+            log = Log(tuple[2], tuple[3], tuple[0], tuple[1])
+            list_logs.append(log)
+        return result
