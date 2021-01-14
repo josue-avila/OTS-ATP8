@@ -82,7 +82,7 @@ def new_category():
 
 
 @app.route('/categories', methods=['GET', 'POST'])
-def list_categories():
+def list_category():
     if request.method == "POST":
         name = request.form.get('name')
         desc = request.form.get('description')
