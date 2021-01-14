@@ -23,4 +23,4 @@ def read_logs_db() -> list:
         for tuple in result:
             log = Log(tuple[2], tuple[3], tuple[0], tuple[1])
             list_logs.append(log)
-        return result
+        return list_logs
