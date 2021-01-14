@@ -30,7 +30,7 @@ def read_products_db():
 
 def read_product_db(id: int) -> Product:
     cursor.execute(f"SELECT * FROM produto WHERE id = {id};")
-    tuple = cursor.fetchall()[0]
+    tuple = cursor.fetchone()
     product = Product(tuple[1], tuple[2], tuple[3], tuple[0])
     return product
 

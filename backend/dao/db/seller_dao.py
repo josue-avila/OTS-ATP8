@@ -24,7 +24,7 @@ def save_seller_db(seller: Seller) -> None:
 
 def read_seller_db(id: int) -> Seller:
     cursor.execute(f"SELECT * FROM seller WHERE id = {id};")
-    tuple = cursor.fetchall()[0]
+    tuple = cursor.fetchone()
     seller = Seller(tuple[1], tuple[2], tuple[3], tuple[0])
     return seller
 

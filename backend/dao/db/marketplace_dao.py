@@ -22,7 +22,7 @@ def save_marketplace_db(marketplace: Marketplace) -> None:
     
 def read_marketplace_db(id: int) -> Marketplace:
     cursor.execute(f"SELECT * FROM marketplace WHERE id = {id};")
-    tuple = cursor.fetchall()[0]
+    tuple = cursor.fetchone()
     marketplace = Marketplace(tuple[1], tuple[2], tuple[0])
     return marketplace
 
