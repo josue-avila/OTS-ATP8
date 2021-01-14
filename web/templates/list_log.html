@@ -17,6 +17,20 @@
         </tr>
         {% endif %}
         {% if log[2] == "set" %}
+        <tr style="color: green">
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+        </tr>
+        {% endif %}
+        {% if log[2] == "update" %}
+        <tr style="color: yellow">
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+        </tr>
+        {% endif %}
+        {% if log[2] == "delete" %}
         <tr style="color: red">
             <td>{{ log[1] }}</td>
             <td>{{ log[2] }}</td>

@@ -12,12 +12,21 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Descrição</th>
+            <th>Ação</th>
         </tr>
         {% for marketplace in list %}
                 <tr>
                     <td>{{ marketplace.id }}</td>
                     <td>{{ marketplace.name }}</td>
                     <td>{{ marketplace.description }}</td>
+                    <td>
+                        <a href='/marketplaces/{{ marketplace.id }}' class="link-button">
+                            <p>Editar</p>
+                        </a>
+                        <a href='/marketplaces/{{ marketplace.id }}/delete' class="link-button">
+                            <p>Deletar</p>
+                        </a>
+                    </td>
                 </tr>
         {% endfor %}
     </table>

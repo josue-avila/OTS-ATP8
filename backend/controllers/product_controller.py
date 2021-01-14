@@ -1,4 +1,5 @@
-from backend.dao.db.product_dao import save_product_db, read_products_db
+from backend.dao.db.product_dao import save_product_db, read_products_db, read_product_db, update_product_db, \
+    delete_product_db
 from backend.controllers.log_controller import save_log
 from backend.models.product import Product
 
@@ -17,3 +18,19 @@ def save_product(product: Product) -> None:
             and isinstance(product.price, str)):
         save_product_db(product)
         save_log('set', 'product')
+
+
+def read_product(id: int) -> Product:
+    product = read_product_db(id)
+    save_log('read', 'product')
+    return product
+
+
+def update_product(product: Product) -> None:
+    update_product_db(product)
+    save_log('update', 'product')
+
+
+def delete_product(id: int) -> None:
+    delete_product_db(id)
+    save_log('delete', 'product')

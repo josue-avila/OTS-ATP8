@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="form-container">
+    <form action="/sellers/{{ object.id }}" method="POST">
+        <input type="text" placeholder="Nome Completo" value="{{ object.fullname }}" name="fullname" class="input-form" required/>
+        <input type="text" placeholder="Telefone" value="{{ object.phone }}" name="phone" class="input-form" required/>
+        <input type="text" placeholder="Email" value="{{ object.email }}" name="email" class="input-form" required/>
+        <br /><br />
+        <input type="submit" class="button" />
+
+    </form>
+</div>
+{% endblock %}

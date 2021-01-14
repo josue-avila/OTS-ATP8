@@ -1,12 +1,12 @@
 import sys
+
 sys.path.append('.')
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from backend.controllers.marketplace_controller import *
 from backend.controllers.category_controller import *
 from backend.controllers.seller_controller import *
 from backend.controllers.log_controller import *
 from backend.controllers.product_controller import *  # pylint: disable=import-error
-
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -32,7 +32,26 @@ def list_product():
         product = Product(name, description, price)
         save_product(product)
     products = read_products()
-    return render_template('product_list.html', title='Products', list=products)
+    return render_template('list_product.html', title='Products', list=products)
+
+
+@app.route('/products/<int:id>', methods=['GET', 'POST'])
+def edit_product(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        price = request.form.get('price')
+        new_product = Product(name, desc, price, id)
+        update_product(new_product)
+        return redirect(url_for('list_product'))
+    product = read_product(id)
+    return render_template('edit_product.html', title='Product', object=product)
+
+
+@app.route('/products/<int:id>/delete', methods=['GET'])
+def erase_product(id: int):
+    delete_product(id)
+    return redirect(url_for('list_product'))
 
 
 # MARKETPLACES
@@ -44,12 +63,30 @@ def list_marketplace():
         marketplace = Marketplace(name, description)
         save_marketplace(marketplace)
     marketplaces = read_marketplaces()
-    return render_template('marketplaces_list.html', title='Marketplaces', list=marketplaces)
+    return render_template('list_marketplace.html', title='Marketplaces', list=marketplaces)
 
 
 @app.route('/create_marketplace')
 def new_marketplace():
     return render_template('create_marketplace.html', title='Novo Marketplace')
+
+
+@app.route('/marketplaces/<int:id>', methods=['GET', 'POST'])
+def edit_marketplace(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        new_marketplace = Marketplace(name, desc, id)
+        update_marketplace(new_marketplace)
+        return redirect(url_for('list_marketplace'))
+    marketplace = read_marketplace(id)
+    return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
+
+
+@app.route('/marketplaces/<int:id>/delete', methods=['GET'])
+def erase_marketplace(id: int):
+    delete_marketplace(id)
+    return redirect(url_for('list_marketplace'))
 
 
 # CATEGORIAS
@@ -59,14 +96,32 @@ def new_category():
 
 
 @app.route('/categories', methods=['GET', 'POST'])
-def list_categories():
+def list_category():
     if request.method == "POST":
         name = request.form.get('name')
         desc = request.form.get('description')
         category = Category(name, desc)
         save_category(category)
     categories = read_categories()
-    return render_template('categories_list.html', title='Categories', list=categories)
+    return render_template('list_category.html', title='Categories', list=categories)
+
+
+@app.route('/categories/<int:id>', methods=['GET', 'POST'])
+def edit_category(id: int):
+    if request.method == "POST":
+        name = request.form.get('name')
+        desc = request.form.get('description')
+        new_category = Category(name, desc, id)
+        update_category(new_category)
+        return redirect(url_for('list_category'))
+    category = read_category(id)
+    return render_template('edit_category.html', title='Category', object=category)
+
+
+@app.route('/categories/<int:id>/delete', methods=['GET'])
+def erase_category(id: int):
+    delete_category(id)
+    return redirect(url_for('list_category'))
 
 
 # SELLERS
@@ -84,13 +139,32 @@ def list_seller():
         seller = Seller(fullname, phone, email)
         save_seller(seller)
     sellers = read_sellers()
-    return render_template('seller_list.html', title='Sellers', list=sellers)
+    return render_template('list_seller.html', title='Sellers', list=sellers)
+
+
+@app.route('/sellers/<int:id>', methods=['GET', 'POST'])
+def edit_seller(id: int):
+    if request.method == "POST":
+        fullname = request.form.get('fullname')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        new_seller = Seller(fullname, phone, email, id)
+        update_seller(new_seller)
+        return redirect(url_for('list_seller'))
+    seller = read_seller(id)
+    return render_template('edit_seller.html', title='Seller', object=seller)
+
+
+@app.route('/sellers/<int:id>/delete', methods=['GET'])
+def erase_seller(id: int):
+    delete_seller(id)
+    return redirect(url_for('list_seller'))
 
 
 # LOGS
 @app.route('/logs', methods=["GET", "POST"])
 def list_logs():
-    return render_template('logs_list.html', title='Logs', list=read_logs())
+    return render_template('list_log.html', title='Logs', list=read_logs())
 
 
 app.run(debug=True)

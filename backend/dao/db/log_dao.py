@@ -13,7 +13,7 @@ def save_log_db(log: Log):
 
 
 def read_logs_db():
-    cursor.execute('SELECT * FROM logs;')
+    cursor.execute('SELECT * FROM logs ORDER BY id;')
     result = cursor.fetchall()
     list_logs = []
     for tuple in result:

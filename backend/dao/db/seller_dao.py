@@ -3,14 +3,14 @@ from backend.models.seller import Seller
 
 
 def read_sellers_db() -> list:
-
-    cursor.execute('select * from seller')
+    cursor.execute('SELECT * FROM seller ORDER BY id')
     sellers = cursor.fetchall()
     list_sellers = []
     for tuple in sellers:
         seller = Seller(tuple[1], tuple[2], tuple[3], tuple[0])
         list_sellers.append(seller)
     return list_sellers
+
 
 def save_seller_db(seller: Seller) -> None:
     try:
@@ -20,3 +20,18 @@ def save_seller_db(seller: Seller) -> None:
         return True
     except Exception as e:
         return False
+
+
+def read_seller_db(id: int) -> Seller:
+    cursor.execute(f"SELECT * FROM seller WHERE id = {id};")
+    tuple = cursor.fetchone()
+    seller = Seller(tuple[1], tuple[2], tuple[3], tuple[0])
+    return seller
+
+
+def update_seller_db(seller: Seller) -> None:
+    cursor.execute(f"UPDATE seller SET nome = '{seller.fullname}', telefone = '{seller.phone}', email = '{seller.email}' WHERE id = {seller.id};")
+
+
+def delete_seller_db(id: int) -> None:
+    cursor.execute(f"DELETE FROM seller WHERE id={id};")

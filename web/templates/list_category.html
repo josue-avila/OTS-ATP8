@@ -12,12 +12,21 @@
             <th>Código</th>
             <th>Nome</th>
             <th>Descrição</th>
+            <th>Ação</th>
         </tr>
         {% for  category in list %}
                 <tr>
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
                     <td>{{ category.description }}</td>
+                    <td>
+                        <a href='/categories/{{ category.id }}' class="link-button">
+                            <p>Editar</p>
+                        </a>
+                        <a href='/categories/{{ category.id }}/delete' class="link-button">
+                            <p>Deletar</p>
+                        </a>
+                    </td>
                 </tr>
         {% endfor %}
     </table>
