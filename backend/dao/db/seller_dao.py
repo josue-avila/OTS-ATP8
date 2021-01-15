@@ -1,47 +1,35 @@
-from backend.helpers.connection_db import *
+from backend.dao.db.base_dao import BaseDao
 from backend.models.seller import Seller
 
 
-def read_sellers_db() -> list:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute('SELECT * FROM seller ORDER BY id')
-        sellers = cursor.fetchall()
-        list_sellers = []
-        for tuple in sellers:
-            seller = Seller(tuple[1], tuple[2], tuple[3], tuple[0])
-            list_sellers.append(seller)
-        return list_sellers
+class SellerDao(BaseDao):
+    def create(self, model: Seller) -> None:
+        query = f"""INSERT INTO seller(nome, telefone, email) VALUES('{model.fullname}','{model.phone}','{model.email}');"""
+        super().execute(query)
 
 
-def save_seller_db(seller: Seller) -> None:
-    try:
-        with Connection() as con:
-            cursor = con.cursor()
-            cursor.execute(f"INSERT INTO seller (nome, telefone, email) values('{seller.fullname}','{seller.phone}','{seller.email}');")
-            con.commit()
-    except Exception as e:
-        print(e)
+    def read_all(self) -> list:
+        query = 'SELECT * FROM seller ORDER BY id;'
+        result_list = super().read(query)
+        sellers = []
+        for result in result_list:
+            seller = Seller(result[1], result[2], result[3], result[0])
+            sellers.append(seller)
+        return sellers
 
 
-def read_seller_db(id: int) -> Seller:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"SELECT * FROM seller WHERE id = {id};")
-        tuple = cursor.fetchall()[0]
-        seller = Seller(tuple[1], tuple[2], tuple[3], tuple[0])
+    def read_by_id(self, id: int) -> Seller:
+        query = f"SELECT * FROM seller WHERE id = {id};"
+        result = super().read(query)[0]
+        seller = Seller(result[1], result[2], result[3], result[0])
         return seller
 
 
-def update_seller_db(seller: Seller) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"UPDATE seller SET nome = '{seller.fullname}', telefone = '{seller.phone}', email = '{seller.email}' WHERE id = {seller.id};")
-        con.commit()
+    def update(self, model: Seller)-> None:
+        query = f"UPDATE seller SET nome = '{model.fullname}', telefone = '{model.phone}', email = '{model.email}' WHERE id = {model.id};"
+        super().execute(query)
 
 
-def delete_seller_db(id: int) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"DELETE FROM seller WHERE id={id};")
-        con.commit()
+    def delete(self, id: int) -> None:
+        query = f"DELETE FROM seller WHERE id={id};"
+        super().execute(query)

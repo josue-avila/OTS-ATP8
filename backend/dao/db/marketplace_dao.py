@@ -1,46 +1,35 @@
-from backend.helpers.connection_db import *
+from backend.dao.db.base_dao import BaseDao
 from backend.models.marketplace import Marketplace
 
 
-def read_marketplaces_db() -> list:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute('SELECT * FROM marketplace ORDER BY id')
-        marketplaces = cursor.fetchall()
-        list_marketplaces = []
-        for tuple in marketplaces:
-            marketplace = Marketplace(tuple[1],tuple[2],tuple[0])
-            list_marketplaces.append(marketplace)
-        return list_marketplaces
+class MarketplaceDao(BaseDao):
+    def create(self, model: Marketplace) -> None:
+        query = f"""INSERT INTO marketplace(nome, descricao) VALUES('{model.name}','{model.description}');"""
+        super().execute(query)
 
 
-def save_marketplace_db(marketplace: Marketplace) -> None:
-    try:
-        with Connection() as con:
-            cursor = con.cursor()
-            cursor.execute(f"INSERT INTO marketplace (nome, descricao) values('{marketplace.name}','{marketplace.description}');")
-            con.commit()
-    except Exception as e:
-        print(e)
+    def read_all(self) -> list:
+        query = 'SELECT * FROM marketplace ORDER BY id;'
+        result_list = super().read(query)
+        marketplaces = []
+        for result in result_list:
+            marketplace = Marketplace(result[1], result[2], result[0])
+            marketplaces.append(marketplace)
+        return marketplaces
 
-    
-def read_marketplace_db(id: int) -> Marketplace:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"SELECT * FROM marketplace WHERE id = {id};")
-        tuple = cursor.fetchall()[0]
-        marketplace = Marketplace(tuple[1], tuple[2], tuple[0])
+
+    def read_by_id(self, id: int) -> Marketplace:
+        query = f"SELECT * FROM marketplace WHERE id = {id};"
+        result = super().read(query)[0]
+        marketplace = Marketplace(result[1], result[2], result[0])
         return marketplace
 
 
-def update_marketplace_db(marketplace: Marketplace) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"UPDATE marketplace SET nome = '{marketplace.name}', descricao = '{marketplace.description}' WHERE id = {marketplace.id};")
-        con.commit()
+    def update(self, model: Marketplace)-> None:
+        query = f"UPDATE marketplace SET nome = '{model.name}', descricao = '{model.description}' WHERE id = {model.id};"
+        super().execute(query)
 
-def delete_marketplace_db(id: int) -> None:
-    with Connection() as con:
-        cursor = con.cursor()
-        cursor.execute(f"DELETE FROM marketplace WHERE id={id};")
-        con.commit()
+
+    def delete(self, id: int) -> None:
+        query = f"DELETE FROM marketplace WHERE id={id};"
+        super().execute(query)
