@@ -7,9 +7,20 @@ from backend.controllers.category_controller import *
 from backend.controllers.seller_controller import *
 from backend.controllers.log_controller import *
 from backend.controllers.product_controller import *  # pylint: disable=import-error
+from backend.models.category import Category
+from backend.models.marketplace import Marketplace
+from backend.models.product import Product
+from backend.models.seller import Seller
+
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+marketplace_controller = MarketplaceController()
+category_controller = CategoryController()
+product_controller = ProductController()
+seller_controller = SellerController()
+log_controller = LogController()
 
 
 @app.route('/')
@@ -30,8 +41,8 @@ def list_product():
         description = request.form.get('description')
         price = request.form.get('price')
         product = Product(name, description, price)
-        save_product(product)
-    products = read_products()
+        product_controller.create(product)
+    products = product_controller.read_all()
     return render_template('list_product.html', title='Products', list=products)
 
 
@@ -42,15 +53,15 @@ def edit_product(id: int):
         desc = request.form.get('description')
         price = request.form.get('price')
         new_product = Product(name, desc, price, id)
-        update_product(new_product)
+        product_controller.update(new_product)
         return redirect(url_for('list_product'))
-    product = read_product(id)
+    product = product_controller.read_by_id(id)
     return render_template('edit_product.html', title='Product', object=product)
 
 
 @app.route('/products/<int:id>/delete', methods=['GET'])
 def erase_product(id: int):
-    delete_product(id)
+    product_controller.delete(id)
     return redirect(url_for('list_product'))
 
 
@@ -61,8 +72,8 @@ def list_marketplace():
         name = request.form.get('name')
         description = request.form.get('description')
         marketplace = Marketplace(name, description)
-        save_marketplace(marketplace)
-    marketplaces = read_marketplaces()
+        marketplace_controller.create(marketplace)
+    marketplaces = marketplace_controller.read_all()
     return render_template('list_marketplace.html', title='Marketplaces', list=marketplaces)
 
 
@@ -77,15 +88,15 @@ def edit_marketplace(id: int):
         name = request.form.get('name')
         desc = request.form.get('description')
         new_marketplace = Marketplace(name, desc, id)
-        update_marketplace(new_marketplace)
+        marketplace_controller.update(new_marketplace)
         return redirect(url_for('list_marketplace'))
-    marketplace = read_marketplace(id)
+    marketplace = marketplace_controller.read_by_id(id)
     return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
 
 
 @app.route('/marketplaces/<int:id>/delete', methods=['GET'])
 def erase_marketplace(id: int):
-    delete_marketplace(id)
+    marketplace_controller.delete(id)
     return redirect(url_for('list_marketplace'))
 
 
@@ -101,8 +112,8 @@ def list_category():
         name = request.form.get('name')
         desc = request.form.get('description')
         category = Category(name, desc)
-        save_category(category)
-    categories = read_categories()
+        category_controller.create(category)
+    categories = category_controller.read_all()
     return render_template('list_category.html', title='Categories', list=categories)
 
 
@@ -112,15 +123,15 @@ def edit_category(id: int):
         name = request.form.get('name')
         desc = request.form.get('description')
         new_category = Category(name, desc, id)
-        update_category(new_category)
+        category_controller.update(new_category)
         return redirect(url_for('list_category'))
-    category = read_category(id)
+    category = category_controller.read_by_id(id)
     return render_template('edit_category.html', title='Category', object=category)
 
 
 @app.route('/categories/<int:id>/delete', methods=['GET'])
 def erase_category(id: int):
-    delete_category(id)
+    category_controller.delete(id)
     return redirect(url_for('list_category'))
 
 
@@ -137,8 +148,8 @@ def list_seller():
         phone = request.form.get('phone')
         email = request.form.get('email')
         seller = Seller(fullname, phone, email)
-        save_seller(seller)
-    sellers = read_sellers()
+        seller_controller.create(seller)
+    sellers = seller_controller.read_all()
     return render_template('list_seller.html', title='Sellers', list=sellers)
 
 
@@ -149,22 +160,23 @@ def edit_seller(id: int):
         phone = request.form.get('phone')
         email = request.form.get('email')
         new_seller = Seller(fullname, phone, email, id)
-        update_seller(new_seller)
+        seller_controller.update(new_seller)
         return redirect(url_for('list_seller'))
-    seller = read_seller(id)
+    seller = seller_controller.read_by_id(id)
     return render_template('edit_seller.html', title='Seller', object=seller)
 
 
 @app.route('/sellers/<int:id>/delete', methods=['GET'])
 def erase_seller(id: int):
-    delete_seller(id)
+    seller_controller.delete(id)
     return redirect(url_for('list_seller'))
 
 
 # LOGS
 @app.route('/logs', methods=["GET", "POST"])
 def list_logs():
-    return render_template('list_log.html', title='Logs', list=read_logs())
+    logs = log_controller.read_all()
+    return render_template('list_log.html', title='Logs', list=logs)
 
 
 app.run(debug=True)

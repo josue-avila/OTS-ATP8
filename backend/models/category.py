@@ -7,4 +7,3 @@ class Category:
         self.name = name
         self.description = description
         self.id = id
-
