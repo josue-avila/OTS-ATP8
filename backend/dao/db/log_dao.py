@@ -5,9 +5,8 @@ from backend.models.log import Log
 
 class LogDao(BaseDao):
     def create(self, model: Log) -> None:
-        query = f"""INSERT INTO logs (timestamp, operacao, descricao) VALUES('{log.timestamp}','{log.operation}', '{log.description}');"""
+        query = f"""INSERT INTO logs (timestamp, operacao, descricao) VALUES('{model.timestamp}','{model.operation}', '{model.description}'); """
         super().execute(query)
-
 
     def read_all(self) -> list:
         query = 'SELECT * FROM logs ORDER BY id;'

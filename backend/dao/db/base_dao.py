@@ -2,13 +2,13 @@ from backend.helpers.connection_db import Connection
 
 
 class BaseDao:
-    def execute(self, query:str)-> None:
+    def execute(self, query: str) -> None:
         with Connection() as connection:
             cursor = connection.cursor()
             cursor.execute(query)
             connection.commit()
 
-    def read(self, query:str)-> tuple:
+    def read(self, query: str) -> tuple:
         with Connection() as connection:
             cursor = connection.cursor()
             cursor.execute(query)
