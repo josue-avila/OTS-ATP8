@@ -37,3 +37,7 @@ class Product:
     @price.setter
     def price(self, price: float) -> None:
         self.__price = price
+
+    @id.setter
+    def id(self, id: int) -> None:
+        self.__id = id
