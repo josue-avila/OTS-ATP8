@@ -12,14 +12,14 @@ class ProductDao(BaseDao):
         result_list = super().read(query)
         products = []
         for result in result_list:
-            product = Product(result[1], result[2], result[3], result[0])
+            product = Product(result[1], result[2], result[3].strip('$').replace(',', ' '), result[0])
             products.append(product)
         return products
 
     def read_by_id(self, id: int) -> Product:
         query = f"SELECT * FROM produto WHERE id = {id};"
         result = super().read(query)[0]
-        product = Product(result[1], result[2], result[3], result[0])
+        product = Product(result[1], result[2], result[3].strip('$').replace(',', ' '), result[0])
         return product
 
     def update(self, model: Product) -> None:
