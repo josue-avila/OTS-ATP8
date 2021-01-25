@@ -2,7 +2,7 @@ from sqlalchemy import Column, String
 from backend.models.base_model import BaseModel
 
 class Seller(BaseModel):
-    __tablename__ = 'sellers'
+    __tablename__ = 'seller'
     __name = Column('fullname', String(length=100) )
     __phone = Column( String(length=20) )
     __email = Column( String(length=100) )
