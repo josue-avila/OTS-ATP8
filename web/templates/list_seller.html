@@ -18,14 +18,14 @@
         {% for seller in list %}
                 <tr>
                     <td>{{ seller.id }}</td>
-                    <td>{{ seller.fullname }}</td>
+                    <td>{{ seller.name }}</td>
                     <td>{{ seller.phone }}</td>
                     <td>{{ seller.email }}</td>
                     <td>
-                        <a href='/sellers/{{ seller.id }}' class="link-button">
+                        <a href='/sellers/{{ seller.id_ }}' class="link-button">
                             <p>Editar</p>
                         </a>
-                        <a href='/sellers/{{ seller.id }}/delete' class="link-button">
+                        <a href='/sellers/{{ seller.id_ }}/delete' class="link-button">
                             <p>Deletar</p>
                         </a>
                     </td>
