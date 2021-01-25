@@ -17,15 +17,15 @@
         </tr>
         {% for product in list %}
                 <tr>
-                    <td>{{ product.id }}</td>
+                    <td>{{ product.id_ }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
                     <td>
-                        <a href='/products/{{ product.id }}' class="link-button">
+                        <a href='/products/{{ product.id_ }}' class="link-button">
                             <p>Editar</p>
                         </a>
-                        <a href='/products/{{ product.id }}/delete' class="link-button">
+                        <a href='/products/{{ product.id_ }}/delete' class="link-button">
                             <p>Deletar</p>
                         </a>
                     </td>
