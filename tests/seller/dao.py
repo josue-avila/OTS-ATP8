@@ -3,4 +3,5 @@ from backend.dao.db.seller_dao import SellerDao
 
 seller_dao = SellerDao()
 
-assert isinstance(seller_dao, BaseDao)
+def test_compare_instance_seller_controller_to_basecontroller():
+    assert isinstance(seller_dao, BaseDao)
