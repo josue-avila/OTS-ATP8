@@ -27,10 +27,12 @@ def new_marketplace():
 @marketplaces.route('/marketplaces/<int:id>', methods=['GET', 'POST'])
 def edit_marketplace(id: int):
     if request.method == "POST":
+        marketplace_update = marketplace_controller.read_by_id(id)
         name = request.form.get('name')
         desc = request.form.get('description')
-        new_marketplace = Marketplace(name, desc, id)
-        marketplace_controller.update(new_marketplace)
+        marketplace_update.name = name
+        marketplace_update.description = desc
+        marketplace_controller.update(marketplace_update)
         return redirect('/marketplaces')
     marketplace = marketplace_controller.read_by_id(id)
     return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
@@ -39,4 +41,4 @@ def edit_marketplace(id: int):
 @marketplaces.route('/marketplaces/<int:id>/delete', methods=['GET'])
 def erase_marketplace(id: int):
     marketplace_controller.delete(id)
-    return redirect(url_for('list_marketplace'))
+    return redirect('/marketplaces')
