@@ -27,10 +27,12 @@ def list_category():
 @categories.route('/categories/<int:id>', methods=['GET', 'POST'])
 def edit_category(id: int):
     if request.method == "POST":
+        category_update = category_controller.read_by_id(id)
         name = request.form.get('name')
         desc = request.form.get('description')
-        new_category = Category(name, desc, id)
-        category_controller.update(new_category)
+        category_update.name = name
+        category_update.description = desc
+        category_controller.update(category_update)
         return redirect('/categories')
     category = category_controller.read_by_id(id)
     return render_template('edit_category.html', title='Category', object=category)
@@ -39,4 +41,4 @@ def edit_category(id: int):
 @categories.route('/categories/<int:id>/delete', methods=['GET'])
 def erase_category(id: int):
     category_controller.delete(id)
-    return redirect(url_for('list_category'))
+    return redirect('/categories')
