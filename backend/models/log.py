@@ -5,9 +5,9 @@ from sqlalchemy import Column, DATETIME, String
 
 class Log(BaseModel):
     __tablename__ = 'log'
-    timestamp = Column(String)
-    operation = Column(String)
-    description = Column(String)
+    timestamp = Column(String(length=20), nullable=False)
+    operation = Column(String(length=20), nullable=False)
+    description = Column(String(length=300), nullable=False)
 
     def __init__(self, operation: str, description: str):
         date = datetime.now()
