@@ -28,11 +28,14 @@ def list_seller():
 @sellers.route('/sellers/<int:id>', methods=['GET', 'POST'])
 def edit_seller(id: int):
     if request.method == "POST":
+        seller_update = seller_controller.read_by_id(id)
         fullname = request.form.get('fullname')
         phone = request.form.get('phone')
         email = request.form.get('email')
-        new_seller = Seller(fullname, phone, email, id)
-        seller_controller.update(new_seller)
+        seller_update.name = fullname
+        seller_update.phone = phone
+        seller_update.email = email
+        seller_controller.update(seller_update)
         return redirect('/sellers')
     seller = seller_controller.read_by_id(id)
     return render_template('edit_seller.html', title='Seller', object=seller)
@@ -41,4 +44,4 @@ def edit_seller(id: int):
 @sellers.route('/sellers/<int:id>/delete', methods=['GET'])
 def erase_seller(id: int):
     seller_controller.delete(id)
-    return redirect(url_for('list_seller'))
+    return redirect('/sellers')
