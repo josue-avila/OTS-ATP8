@@ -31,7 +31,7 @@ def edit_marketplace(id: int):
         desc = request.form.get('description')
         new_marketplace = Marketplace(name, desc, id)
         marketplace_controller.update(new_marketplace)
-        return redirect(url_for('list_marketplace'))
+        return redirect('/marketplaces')
     marketplace = marketplace_controller.read_by_id(id)
     return render_template('edit_marketplace.html', title='Marketplace', object=marketplace)
 

@@ -31,7 +31,7 @@ def edit_category(id: int):
         desc = request.form.get('description')
         new_category = Category(name, desc, id)
         category_controller.update(new_category)
-        return redirect(url_for('list_category'))
+        return redirect('/categories')
     category = category_controller.read_by_id(id)
     return render_template('edit_category.html', title='Category', object=category)
 

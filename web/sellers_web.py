@@ -33,7 +33,7 @@ def edit_seller(id: int):
         email = request.form.get('email')
         new_seller = Seller(fullname, phone, email, id)
         seller_controller.update(new_seller)
-        return redirect(url_for('list_seller'))
+        return redirect('/sellers')
     seller = seller_controller.read_by_id(id)
     return render_template('edit_seller.html', title='Seller', object=seller)
 

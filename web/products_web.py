@@ -33,7 +33,7 @@ def edit_product(id: int):
         price = request.form.get('price')
         new_product = Product(name, desc, price, id)
         product_controller.update(new_product)
-        return redirect(url_for('list_product'))
+        return redirect('/products')
     product = product_controller.read_by_id(id)
     return render_template('edit_product.html', title='Product', object=product)
 
