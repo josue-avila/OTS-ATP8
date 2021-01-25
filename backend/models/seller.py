@@ -7,7 +7,7 @@ class Seller(BaseModel):
     phone = Column('phone', String(length=18) )
     email = Column('email', String(length=30) )
 
-    def __init__(self, name: str, phone: str, email: str, id: int = None):
+    def __init__(self, name: str, phone: str, email: str):
         self.name = name
         self.phone = phone
         self.email = email
