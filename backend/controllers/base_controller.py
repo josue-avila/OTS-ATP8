@@ -38,4 +38,3 @@ class BaseController:
         log = Log('update', self.__domain_name)
         self.__log_controller.save(log)
 
-base = BaseController()
