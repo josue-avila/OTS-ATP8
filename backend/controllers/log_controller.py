@@ -6,7 +6,6 @@ class LogController:
         self.__dao = LogDao()
 
     def save(self, model: object) -> None:
-        print(model.action)
         self.__dao.save(model)
 
     def read_all(self) -> list:
