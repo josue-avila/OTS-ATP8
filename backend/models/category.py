@@ -7,7 +7,6 @@ class Category(BaseModel):
     name = Column(String(length=150))
     description = Column(String(length=200))
 
-    def __init__(self, name: str, description: str, id: int = None) -> None:
-        self.id = id
+    def __init__(self, name: str, description: str) -> None:
         self.name = name
         self.description = description
