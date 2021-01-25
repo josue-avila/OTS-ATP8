@@ -13,4 +13,3 @@ def test_marketplace_model_instance():
     assert marketplace.name == name
     assert marketplace.description == description
 
-# test_marketplace_model_instance()

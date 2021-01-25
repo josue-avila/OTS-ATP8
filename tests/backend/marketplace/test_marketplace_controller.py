@@ -8,4 +8,3 @@ def test_marketplace_controller_instance():
     assert isinstance(marketplace_controller, BaseController)
     assert isinstance(marketplace_controller, MarketplaceController)
 
-# test_marketplace_controller_instance()
