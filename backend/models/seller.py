@@ -3,9 +3,9 @@ from backend.models.base_model import BaseModel
 
 class Seller(BaseModel):
     __tablename__ = 'seller'
-    __name = Column('fullname', String(length=100) )
-    __phone = Column( String(length=20) )
-    __email = Column( String(length=100) )
+    __name = Column('name', String(length=100) )
+    __phone = Column('phone', String(length=20) )
+    __email = Column('email', String(length=100) )
 
     def __init__(self, name: str, phone: str, email: str, id: int = None):
         self.name = name
