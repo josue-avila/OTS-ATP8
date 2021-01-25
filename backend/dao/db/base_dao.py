@@ -20,7 +20,7 @@ class BaseDao:
 
     def read_by_id(self, id: int) -> BaseModel:
         with Session() as session:
-            result = session.query(self.__type_model).filter_by(id=id).one()
+            result = session.query(self.__type_model).filter_by(id_=id).one()
         return result
 
     def delete(self, model: BaseModel) -> None:
