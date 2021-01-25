@@ -28,12 +28,12 @@ def list_product():
 @products.route('/products/<int:id>', methods=['GET', 'POST'])
 def edit_product(id: int):
     if request.method == "POST":
-        name = request.form.get('name')
-        desc = request.form.get('description')
-        price = request.form.get('price')
-        new_product = Product(name, desc, price, id)
-        product_controller.update(new_product)
-        return redirect(url_for('list_product'))
+        product = product_controller.read_by_id(id)
+        product.name = request.form.get('name')
+        product.desc = request.form.get('description')
+        product.price = request.form.get('price')
+        product_controller.update(product)
+        return redirect('/products')
     product = product_controller.read_by_id(id)
     return render_template('edit_product.html', title='Product', object=product)
 
