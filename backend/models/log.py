@@ -4,6 +4,7 @@ from sqlalchemy import Column, DATETIME, String
 
 
 class Log(BaseModel):
+    __tablename__ = 'log'
     timestamp = Column(String)
     operation = Column(String)
     description = Column(String)
