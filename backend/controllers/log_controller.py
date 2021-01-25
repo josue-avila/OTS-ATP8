@@ -1,8 +1,14 @@
-from backend.controllers.base_controller import BaseController
 from backend.dao.db.log_dao import LogDao
 
 
-class LogController(BaseController):
+class LogController:
     def __init__(self):
         self.__dao = LogDao()
-        super().__init__(self.__dao, 'log')
+
+    def save(self, model: object) -> None:
+        print(model.action)
+        self.__dao.save(model)
+
+    def read_all(self) -> list:
+        list_all = self.__dao.read_all()
+        return list_all
