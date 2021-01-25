@@ -1,43 +1,15 @@
-class Product:
-    __name: str
-    __description: str
-    __price: float
-    __id: int
+from sqlalchemy import Column, String, Numeric
 
-    def __init__(self, name: str, description: str, price: float, id: int = None):
-        self.__name = name
-        self.__description = description
-        self.__price = price
-        self.__id = id
+from backend.models.base_model import BaseModel
 
-    @property
-    def name(self) -> str:
-        return self.__name
 
-    @property
-    def description(self) -> str:
-        return self.__description
+class Product(BaseModel):
+    __tablename__ = 'product'
+    name = Column(String(length=150), nullable=False)
+    description = Column(String(length=200), nullable=True)
+    price = Column(Numeric, nullable=False)
 
-    @property
-    def price(self) -> float:
-        return self.__price
-
-    @property
-    def id(self) -> int:
-        return self.__id
-
-    @name.setter
-    def name(self, name: str) -> None:
-        self.__name = name
-
-    @description.setter
-    def description(self, description: str) -> None:
-        self.__description = description
-
-    @price.setter
-    def price(self, price: float) -> None:
-        self.__price = price
-
-    @id.setter
-    def id(self, id: int) -> None:
-        self.__id = id
+    def __init__(self, name: str, description: str, price: float):
+        self.name = name
+        self.description = description
+        self.price = price
