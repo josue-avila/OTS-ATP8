@@ -1,34 +1,39 @@
+from backend.controllers.log_controller import LogController
 from backend.dao.db.base_dao import BaseDao
-from backend.dao.db.log_dao import LogDao
+from backend.models.base_model import BaseModel
 from backend.models.log import Log
 
+
 class BaseController:
-    def __init__(self, dao, model_type):
+    def __init__(self, dao: BaseDao, domain_name: str) -> None:
         self.__dao = dao
-        self.__logdao = LogDao()
-        self.__model_type = model_type
+        self.__log_controller = LogController()
+        self.__domain_name = domain_name
 
-    def create(self, model: object) -> None:
-        log = Log('set', self.__model_type)
-        self.__logdao.create(log)
-        return self.__dao.create(model)
+    def create(self, model: BaseModel) -> None:
+        self.__dao.save(model)
+        log = Log('set', self.__domain_name)
+        self.__log_controller.create(log)
 
-    def read_by_id(self, id: int) -> object:
-        log = Log('get', self.__model_type)
-        self.__logdao.create(log)
-        return self.__dao.read_by_id(id)
+    def read_by_id(self, id: int) -> BaseModel:
+        result = self.__dao.read_by_id(id)
+        log = Log('get', self.__domain_name)
+        self.__log_controller.create(log)
+        return result
 
     def read_all(self) -> list:
-        log = Log('get', f'all {self.__model_type}')
-        self.__logdao.create(log)
-        return self.__dao.read_all()
+        result = self.__dao.read_all()
+        log = Log('get', f'all {self.__domain_name}')
+        self.__log_controller.create(log)
+        return result
 
     def delete(self, id: int) -> None:
-        log = Log('delete', self.__model_type)
-        self.__logdao.create(log)
-        self.__dao.delete(id)
+        item = self.read_by_id(id)
+        self.__dao.delete(item)
+        log = Log('delete', self.__domain_name)
+        self.__log_controller.create(log)
 
-    def update(self, model: object) -> None:
-        log = Log('update', self.__model_type)
-        self.__logdao.create(log)
-        self.__dao.update(model)
+    def update(self, model: BaseModel) -> None:
+        self.__dao.save(model)
+        log = Log('update', self.__domain_name)
+        self.__log_controller.create(log)
