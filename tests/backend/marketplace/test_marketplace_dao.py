@@ -7,4 +7,5 @@ def test_marketplace_dao_instance():
 
     assert isinstance(marketplace_dao, BaseDao)
     assert isinstance(marketplace_dao, MarketplaceDao)
+    assert issubclass(MarketplaceDao, BaseDao)
 
