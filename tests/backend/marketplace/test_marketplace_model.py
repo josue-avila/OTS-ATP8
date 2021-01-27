@@ -1,6 +1,3 @@
-import sys
-sys.path.append('.')
-
 from backend.models.base_model import BaseModel
 from backend.models.marketplace import Marketplace
 
@@ -28,6 +25,7 @@ def test_compare_isinstance():
 def test_has_attribute():
     assert hasattr(marketplace, 'name')
     assert hasattr(marketplace, 'description')
+
 
 def test_validate_name():
     try:

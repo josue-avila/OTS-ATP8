@@ -1,6 +1,6 @@
 from _datetime import datetime
 from backend.models.base_model import BaseModel
-from sqlalchemy import Column, DATETIME, String
+from sqlalchemy import Column, String
 from sqlalchemy.orm import validates
 
 

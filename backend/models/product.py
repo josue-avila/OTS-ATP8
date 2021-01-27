@@ -1,8 +1,9 @@
 import re
+
 from sqlalchemy import Column, String, Numeric
-from sqlalchemy.sql.sqltypes import Float
 from backend.models.base_model import BaseModel
 from sqlalchemy.orm import validates
+
 
 class Product(BaseModel):
     __tablename__ = 'product'

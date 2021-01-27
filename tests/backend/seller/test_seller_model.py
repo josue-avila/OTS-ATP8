@@ -1,7 +1,6 @@
 from backend.models.base_model import BaseModel
 from backend.models.seller import Seller
 
-
 name = 'Clara'
 email = 'clara@olist.com'
 phone = '(41) 9 3542-3456'

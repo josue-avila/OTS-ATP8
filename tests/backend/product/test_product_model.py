@@ -1,5 +1,3 @@
-import sys
-sys.path.append('.')
 from backend.models.base_model import BaseModel
 from backend.models.product import Product
 
@@ -30,6 +28,7 @@ def test_has_attribute():
     assert hasattr(product, 'name')
     assert hasattr(product, 'description')
     assert hasattr(product, 'price')
+
 
 def test_validate_name():
     try:
@@ -64,6 +63,7 @@ def test_validate_description():
         """,4.1)
     except Exception as e:
         assert isinstance(e, ValueError)
+
 
 def test_validate_price():
     try:
