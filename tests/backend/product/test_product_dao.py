@@ -7,3 +7,4 @@ def test_product_dao_instance():
 
     assert isinstance(product_dao, BaseDao)
     assert isinstance(product_dao, ProductDao)
+    assert issubclass(ProductDao, BaseDao)
