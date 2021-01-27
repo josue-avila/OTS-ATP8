@@ -25,3 +25,16 @@ def test_compare_isinstance():
 def test_has_attribute():
     assert hasattr(category, 'name')
     assert hasattr(category, 'description')
+
+def test_validate_name():
+    try:
+        Category(None, 'Eletronicos')
+    except Exception as e:
+        assert isinstance(e, ValueError)
+
+
+def test_validate_description():
+    try:
+        Category('Moveis', '     ')
+    except Exception as e:
+        assert isinstance(e, ValueError)

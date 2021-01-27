@@ -1,7 +1,6 @@
 from backend.models.base_model import BaseModel
 from backend.models.seller import Seller
 
-
 name = 'Clara'
 email = 'clara@olist.com'
 phone = '(41) 9 3542-3456'
@@ -40,6 +39,13 @@ def test_validate_email():
 
 def test_validate_phone():
     try:
-        Seller('Test', 'aaaaa', 'test@olist.com')
+        Seller('Test', None, 'test@olist.com')
+    except Exception as e:
+        assert isinstance(e, ValueError)
+
+
+def test_validate_name():
+    try:
+        Seller(' ', '(41) 9 3542-3456', 'test@olist.com')
     except Exception as e:
         assert isinstance(e, ValueError)
