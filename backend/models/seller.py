@@ -38,8 +38,6 @@ class Seller(BaseModel):
             raise ValueError("Please write a name number!")
         elif name.strip(' ') == '':
             raise ValueError("Name can't be null!")
-        elif name.strip(' ') != '':
-            return name
         raise ValueError("Name can't be null!")
 
     def __init__(self, name: str, phone: str, email: str):
