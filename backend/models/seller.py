@@ -19,8 +19,8 @@ class Seller(BaseModel):
         elif email.strip(' ') == '':
             raise ValueError("Email can't be null!")
         elif re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            return email
-        raise ValueError('Invalid email!')
+            raise ValueError('Invalid email!')
+        return email
 
     @validates('phone')
     def validate_phone(self, key, phone):
@@ -38,7 +38,7 @@ class Seller(BaseModel):
             raise ValueError("Please write a name number!")
         elif name.strip(' ') == '':
             raise ValueError("Name can't be null!")
-        raise ValueError("Name can't be null!")
+        return name
 
     def __init__(self, name: str, phone: str, email: str):
         self.name = name
