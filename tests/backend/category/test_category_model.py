@@ -28,7 +28,7 @@ def test_has_attribute():
 
 def test_validate_name():
     try:
-        Category('    ', None, 'Eletronicos')
+        Category(None, 'Eletronicos')
     except Exception as e:
         assert isinstance(e, ValueError)
 
