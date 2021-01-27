@@ -22,8 +22,8 @@ class Category(BaseModel):
 
     @validates('description')
     def validate_description(self, key, description):
-        if name is None:
+        if description is None:
             raise ValueError("Please write a valid description!")
-        elif name.strip(' ') == '':
+        elif description.strip(' ') == '':
             raise ValueError("Description can't be null!")
         return description
